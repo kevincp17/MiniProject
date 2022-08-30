@@ -39,7 +39,7 @@ export default function Signin() {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      console.log(values);
+
       let payload = {
         email: values.email,
         password: values.password
@@ -58,14 +58,11 @@ export default function Signin() {
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <a href='/'>
-              <img
-                className="mx-auto h-12 w-auto"
-                src="../assets/images/codeid.png"
-                alt="Workflow"
-              />
-            </a>
-            
+            <img
+              className="mx-auto h-12 w-auto"
+              src="../assets/images/codeid.png"
+              alt="Workflow"
+            />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Or{' '}

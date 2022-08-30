@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useRoutes,Outlet,useNavigate } from 'react-router-dom';
 import AppLayout from './component/layout/AppLayout';
-import LandingPage from './component/layout/LandingPageTest';
+import LandingPage from './component/layout/LandingPage';
 import MainLayout from './component/layout/MainLayout';
 import Page404 from './views/404/Page404';
 import Bootcamp from './views/bootcamp/Bootcamp'
@@ -16,12 +16,7 @@ import Talent from './views/app/talent/Talent'
 import BlankLayout from './component/layout/BlankLayout';
 import Signup from './component/layout/Signup';
 import Placement from './views/app/placement/Placement';
-import Location from './views/app/setting/MasterLocation/indexLocation'
-import Category from './views/app/setting/MasterCategory/indexCategory'
-import Module from './views/app/setting/MasterModule/indexModule'
-import Skill from './views/app/setting/MasterSkill/indexSkill'
-
-
+import EditBatch from './views/app/batch/EditBatch';
 
 export default function Routes(isLoggedIn) {
   return useRoutes([
@@ -33,13 +28,6 @@ export default function Routes(isLoggedIn) {
         { path: 'signup', element: <Navigate to="/auth/signup"  />  },
         { path: 'bootcamp', element: <Bootcamp/> },
         { path: '404', element: <Page404 /> },
-        { path: 'Location', element: <Location /> },
-        { path: 'Setting', element: <Setting />,children:[
-          { path: 'Location', element: <Location /> },
-          { path: 'Category', element: <Category /> },
-          { path: 'Module', element: <Module /> },
-          { path: 'Skill', element: <Skill /> },
-        ] },
       ]
     },
     {
@@ -56,7 +44,8 @@ export default function Routes(isLoggedIn) {
       children: [
         { path: 'dashboard', element: isLoggedIn ? <Dashboard/> : <Navigate to="/auth/signin"/>},
         { path: 'candidat', element: isLoggedIn ? <Candidat/>: <Navigate to="/auth/signin"/> },
-        { path: 'batch', element: isLoggedIn ? <Batch /> : <Navigate to="/auth/signin"/>},
+        { path: 'batch', element: <Batch /> },
+        { path: 'batch/:id', element: <EditBatch /> },
         { path: 'placement', element: isLoggedIn ? <Placement />: <Navigate to="/auth/signin"/> },
         { path: 'talent', element: isLoggedIn ? <Talent />: <Navigate to="/auth/signin"/> },
         { path: 'curriculum', element: isLoggedIn ? <Curriculum />: <Navigate to="/auth/signin"/> },
