@@ -17,7 +17,7 @@ import BlankLayout from './component/layout/BlankLayout';
 import Signup from './component/layout/Signup';
 import Placement from './views/app/placement/Placement';
 import Location from './views/app/setting/MasterLocation/indexLocation'
-import Category from './views/app/setting/MasterCategory/indexCategory'
+import Category from './views/app/master/category';
 import Module from './views/app/setting/MasterModule/indexModule'
 import Skill from './views/app/setting/MasterSkill/indexSkill'
 
