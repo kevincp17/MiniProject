@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class status extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('status', {
     status: {
       type: DataTypes.STRING(15),
       allowNull: false,
@@ -36,5 +33,4 @@ export default class status extends Model {
       },
     ]
   });
-  }
-}
+};

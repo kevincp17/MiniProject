@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class skill_template extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('skill_template', {
     skte_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -65,5 +62,4 @@ export default class skill_template extends Model {
       },
     ]
   });
-  }
-}
+};

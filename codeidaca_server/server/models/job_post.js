@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class job_post extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('job_post', {
     jopo_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -13,7 +10,6 @@ export default class job_post extends Model {
     jopo_number: {
       type: DataTypes.STRING(25),
       allowNull: false,
-      defaultValue: Sequelize.Sequelize.fn('job_id'),
       unique: "job_post_jopo_number_key"
     },
     jopo_title: {
@@ -126,5 +122,4 @@ export default class job_post extends Model {
       },
     ]
   });
-  }
-}
+};

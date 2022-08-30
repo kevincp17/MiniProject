@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class batch_student extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('batch_student', {
     bast_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -69,5 +66,4 @@ export default class batch_student extends Model {
       },
     ]
   });
-  }
-}
+};
