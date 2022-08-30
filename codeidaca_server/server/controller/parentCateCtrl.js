@@ -1,4 +1,3 @@
-import parent_category from "../models/parent_category";
 import { sequelize } from "../models/init-models";
 
 const findAll = async (req,res)=>{
