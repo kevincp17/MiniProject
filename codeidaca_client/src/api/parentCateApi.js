@@ -3,7 +3,7 @@ import config from '../config/config'
 
 const list = async()=>{
     try {
-        const result = await axios.get(`${config.domain}/app/edit`)
+        const result = await axios.get(`${config.myDomain}/app/edit`)
         return result.data
     } catch (error) {
         return await error.message
