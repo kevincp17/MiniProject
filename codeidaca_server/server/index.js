@@ -48,6 +48,9 @@ app.use(config.URL_DOMAIN+"/address_type",routes.AddressTypeRoute)
 app.use(config.URL_DOMAIN+"/country",routes.CountryRoute)
 app.use(config.URL_DOMAIN+"/province",routes.ProvinceRoute)
 app.use(config.URL_DOMAIN+"/city",routes.CityRoute)
+//dash batch evaluation
+app.use(config.URL_DOMAIN+'/test',routes.TestRoute)
+app.use(config.URL_DOMAIN+'/list',routes.ListRoute)
 
 //use middleware to handle error from others modules
 app.use(middleware.handleError);
