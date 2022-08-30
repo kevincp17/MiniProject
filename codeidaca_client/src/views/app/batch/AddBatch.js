@@ -276,7 +276,7 @@ export default function AddBatch() {
 							{formik.touched.batch_co_instructor_id && formik.errors.batch_co_instructor_id ? <span className="text-xs text-red-600">{formik.errors.batch_co_instructor_id}</span> : null}
 						</div>
 					</div>
-					<h1 className='mt-5 mb-3 font-semibold uppercase'>Recommended Bootcamp Members</h1>
+					<h1 className='mt-4 mb-3 font-semibold uppercase'>Recommended Bootcamp Members</h1>
 					<div className='flex justify-center text-sm'>
 						<select
 							className=' focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md'
@@ -369,16 +369,23 @@ export default function AddBatch() {
 				<div className='bg-gray-100 px-8'>
 					<div className='flex justify-end py-2 text-sm'>
 						<button 
-							className='mr-5 transition text-green-500 hover:bg-green-500 hover:text-white border-2 border-green-500 cursor-pointer px-4 py-1 shadow-sm text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+							className='mr-5 transition flex items-center text-green-500 hover:bg-green-500 hover:text-white border-2 border-green-500 cursor-pointer pl-2 pr-4 py-1 shadow-sm text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
 							type='submit' 
 							onClick={formik.handleSubmit}
 						>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  							<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+							</svg>
+							{ }
 							Save
 						</button>
 						<button 
-							className='transition text-red-500 hover:bg-red-500 hover:text-white border-2 border-red-500 cursor-pointer px-4 py-1 shadow-sm text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' 
+							className='transition flex items-center text-red-500 hover:bg-red-500 hover:text-white border-2 border-red-500 cursor-pointer pl-2 pr-4 py-1 shadow-sm text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' 
 							onClick={() => navigate('/app/batch/')}
 						>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+							</svg>
 							Cancel
 						</button>
 					</div>
