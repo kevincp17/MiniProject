@@ -5,6 +5,8 @@ import AddressTypeRoute from './AddressTypeRoute'
 import CountryRoute from './CountryRoute'
 import ProvinceRoute from './ProvinceRoute'
 import CityRoute from './CityRoute'
+import CateRoute from './categoryRoutes'
+import parentCateRoute from './parentCateRoutes'
 
 export default{
     UserRoute,
@@ -13,5 +15,7 @@ export default{
     AddressTypeRoute,
     CountryRoute,
     ProvinceRoute,
-    CityRoute
+    CityRoute,
+    CateRoute,
+    parentCateRoute,
 }
