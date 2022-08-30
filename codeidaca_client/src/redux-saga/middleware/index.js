@@ -5,7 +5,7 @@ import * as ActionTypeProgramEntity from '../constants/ProgramEntity';
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
 import * as ActionMasterLocation from '../constants/MasterLocation'
-
+import * as ActionTypeBatEva from '../constants/BatEvaConstant'
 
 import {handleSignup,handleSignin,handleSignout} from './UserSaga'
 import {handleGetFourProgram,handleGetThreeCourse,handleGetAlumniTestimony} from './ProgramEntitySaga'
@@ -20,7 +20,7 @@ import {
   handleAddCity,handleDelCity,handleEditCity,handleGetCity,handleGetOneCity
 } from './MasterLocationSaga'
 
-
+import {handleGetBatEva,handleAddBatEva} from './BatEvaMiddle'
 function *watchAll() {
   yield all([
     takeEvery(ActionTypeUser.ADD_SIGNUP_REQUEST, handleSignup),
@@ -55,6 +55,9 @@ function *watchAll() {
     takeEvery(ActionMasterLocation.ADD_CITY_REQUEST,handleAddCity),
     takeEvery(ActionMasterLocation.GETONE_CITY_REQUEST,handleGetOneCity),
     takeEvery(ActionMasterLocation.EDIT_CITY_REQUEST,handleEditCity),
+
+    takeEvery(ActionTypeBatEva.GET_BATEVA_REQUEST, handleGetBatEva),
+    takeEvery(ActionTypeBatEva.ADD_BATEVA_REQUEST, handleAddBatEva)
   ])
 }
 

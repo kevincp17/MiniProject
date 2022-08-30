@@ -20,6 +20,7 @@ import Location from './views/app/setting/MasterLocation/indexLocation'
 import Category from './views/app/setting/MasterCategory/indexCategory'
 import Module from './views/app/setting/MasterModule/indexModule'
 import Skill from './views/app/setting/MasterSkill/indexSkill'
+import BatchEva from './views/app/batch/BatchStudentEvaluation';
 
 
 
@@ -57,6 +58,7 @@ export default function Routes(isLoggedIn) {
         { path: 'dashboard', element: isLoggedIn ? <Dashboard/> : <Navigate to="/auth/signin"/>},
         { path: 'candidat', element: isLoggedIn ? <Candidat/>: <Navigate to="/auth/signin"/> },
         { path: 'batch', element: isLoggedIn ? <Batch /> : <Navigate to="/auth/signin"/>},
+        { path: 'batch/evaluation/:id', element: <BatchEva/>},
         { path: 'placement', element: isLoggedIn ? <Placement />: <Navigate to="/auth/signin"/> },
         { path: 'talent', element: isLoggedIn ? <Talent />: <Navigate to="/auth/signin"/> },
         { path: 'curriculum', element: isLoggedIn ? <Curriculum />: <Navigate to="/auth/signin"/> },
