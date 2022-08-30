@@ -36,7 +36,7 @@ export default function Routes(isLoggedIn) {
         { path: 'Location', element: <Location /> },
         { path: 'Setting', element: <Setting />,children:[
           { path: 'Location', element: <Location /> },
-          { path: 'Category', element: <Category /> },
+          { path: 'category', element: <Category /> },
           { path: 'Module', element: <Module /> },
           { path: 'Skill', element: <Skill /> },
         ] },
