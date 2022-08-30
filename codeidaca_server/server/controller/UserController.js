@@ -77,11 +77,23 @@ const signin = async (req, res) => {
     }
 }
 
+// const allget = async(req,res) => {
+//     try {
+//         const result = await req.context.models.users.findAll({
+//             include:[{
+//                 model:req.context.models.roles,
+//                 as:"usro_role_id_roles",
+//                 required:true,
+//             }]
+//         })
+//          res.send(result)
+//     } catch (error) {
+//         res.status(404).json(error.message);
+//     }
+// }
 const allget = async(req,res) => {
     try {
-        const result = await req.context.models.users.findAll({
-            include: { all: true }
-        })
+        const result = await req.context.models.users.findAll()
          res.send(result)
     } catch (error) {
         res.status(404).json(error.message);

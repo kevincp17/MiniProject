@@ -1,70 +1,62 @@
-import {sequelize} from "../models/init-models";
 
-const findAll=async(req,res)=>{
-    try{
-        const batch=await req.context.models.batch.findAll()
-        return res.send(batch)
-    }catch(error){
-        return res.status(404).send(error)
+const allget = async(req,res) => {
+    try {
+        const result = await req.context.models.batch.findAll({
+            include:[{
+                all:true
+            }]
+        })
+         res.send(result)
+    } catch (error) {
+        res.status(404).json(error.message);
     }
 }
-
-const findOne=async(req,res)=>{
-    try{
-        const batch=await req.context.models.batch.findOne({
-            where:{batch_id:req.params.id}
+const findOne = async (req, res) => {
+    try {
+        const batch = await req.context.models.batch.findOne({
+            where: { batch_id: req.params.id }
         })
         return res.send(batch)
-    }catch(error){
+    } catch (error) {
+        return res.status(404).send(error)
+    }
+}
+const update = async (req, res) => {
+    
+    try {
+        const result = await req.context.models.batch.update({
+            //batch_status: fields[0].value,
+            batch_status:req.body.batch_status
+        },{ returning:true, where: { batch_id: req.params.id } })
+        return res.send(result)
+    } catch (error) {
         return res.status(404).send(error)
     }
 }
 
-const create=async(req,res)=>{
-    try{
-        const batch=await req.context.models.batch.create({
-            batch_prog_id:req.body.batch_prog_id,
-            batch_name:req.body.batch_name,
-            batch_start_date:req.body.batch_start_date,
-            batch_end_date:req.body.batch_end_date,
-            batch_status:req.body.batch_status,
-            batch_reason:req.body.batch_reason,
-            batch_type:req.body.batch_type,
-            batch_modified_date:req.body.batch_modified_date,
-            batch_recruiter_id:req.body.batch_recruiter_id,
-            batch_instructor_id:req.body.batch_instructor_id,
-            batch_co_instructor_id:req.body.batch_co_instructor_id
+const deleted = async (req, res) => {
+    try {
+        const batch = await req.context.models.batch.destroy({
+            where: { batch_id: req.params.id }
         })
-        return res.send(batch)
-    }catch(error){
+        return res.send('delete ' + batch + ' rows')
+    } catch (error) {
+        return res.status(404).send(error)
+    }
+}
+const deleteNext = async (req, res, next) => {
+    try {
+        const batch = await req.context.models.batch_student.destroy({
+            where: { bast_batch_id: req.params.id }
+        })
+        next()
+    } catch (error) {
         return res.status(404).send(error)
     }
 }
 
-const update=async (req,res)=>{
-    try{
-        const batch=await req.context.models.batch.update({
-            batch_prog_id:req.body.batch_prog_id,
-            batch_name:req.body.batch_name,
-            batch_start_date:req.body.batch_start_date,
-            batch_end_date:req.body.batch_end_date,
-            batch_status:req.body.batch_status,
-            batch_reason:req.body.batch_reason,
-            batch_type:req.body.batch_type,
-            batch_modified_date:req.body.batch_modified_date,
-            batch_recruiter_id:req.body.batch_recruiter_id,
-            batch_instructor_id:req.body.batch_instructor_id,
-            batch_co_instructor_id:req.body.batch_co_instructor_id
-        },{returning :true,where:{batch_id: req.params.id}})
-        return res.send(batch)
-    }catch(error){
-        return res.status(404).send(error)
-    }
-}
+export default {
 
-export default{
-    findAll,
-    findOne,
-    create,
-    update
+    allget, findOne, update, deleted, deleteNext
+
 }
