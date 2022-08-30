@@ -6,6 +6,8 @@ import CountryReduce from './CountryReducer';
 import ProvinceReduce from './ProvinceReducer';
 import CityReduce from './CityReducer';
 import MasterLocationReduce from './MasterLocationReducer';
+import BatchListReduce from './BatchListReducer';
+import BatchReduce from './Test';
 
 const rootReducer = combineReducers({
   userState : userReducer,
@@ -15,6 +17,9 @@ const rootReducer = combineReducers({
   provinceState:ProvinceReduce,
   cityState:CityReduce,
   masterLocationState:MasterLocationReduce
+  batchListState : BatchListReduce, 
+  batchState : BatchReduce
+  
 });
 
 export default rootReducer;
