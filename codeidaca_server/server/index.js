@@ -49,6 +49,8 @@ app.use(config.URL_DOMAIN+"/country",routes.CountryRoute)
 app.use(config.URL_DOMAIN+"/province",routes.ProvinceRoute)
 app.use(config.URL_DOMAIN+"/city",routes.CityRoute)
 
+app.use(config.URL_API+'/batch/evaluation',routes.BatEvaRoute)
+
 //use middleware to handle error from others modules
 app.use(middleware.handleError);
 app.use(middleware.notFound);
