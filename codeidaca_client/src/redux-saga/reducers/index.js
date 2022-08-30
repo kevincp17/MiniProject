@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   countryState:CountryReduce,
   provinceState:ProvinceReduce,
   cityState:CityReduce,
-  masterLocationState:MasterLocationReduce
+  masterLocationState:MasterLocationReduce,
   batchListState : BatchListReduce, 
   batchState : BatchReduce
   
