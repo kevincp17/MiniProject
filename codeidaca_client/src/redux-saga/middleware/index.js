@@ -5,10 +5,15 @@ import * as ActionTypeProgramEntity from '../constants/ProgramEntity';
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
 import * as ActionMasterLocation from '../constants/MasterLocation'
+import * as ActionTypeBatchList from '../constants/BatchListConstants';
+import * as ActionTypeTest from '../constants/Test'
 
 
 import {handleSignup,handleSignin,handleSignout} from './UserSaga'
 import {handleGetFourProgram,handleGetThreeCourse,handleGetAlumniTestimony} from './ProgramEntitySaga'
+import {handleGetBatchList, handleGetOneBatchList, handleEditBatch} from './BatchListMiddle'
+import { handleGetBatch } from './TestSaga';
+
 // import {handleAddAddressType,handleDelAddressType,handleEditAddressType,handleGetAddressType,handleGetOneAddressType} from './AddressTypeSaga'
 // import {handleAddCountry,handleDelCountry,handleEditCountry,handleGetCountry,handleGetOneCountry} from './CountrySaga'
 // import {handleAddProvince,handleDelProvince,handleEditProvince,handleGetProvince,handleGetOneProvince} from './ProvinceSaga'
@@ -55,6 +60,16 @@ function *watchAll() {
     takeEvery(ActionMasterLocation.ADD_CITY_REQUEST,handleAddCity),
     takeEvery(ActionMasterLocation.GETONE_CITY_REQUEST,handleGetOneCity),
     takeEvery(ActionMasterLocation.EDIT_CITY_REQUEST,handleEditCity),
+    
+    
+    //list get
+    takeEvery(ActionTypeBatchList.GET_BATCHLIST_REQUEST, handleGetBatchList),
+    takeEvery(ActionTypeTest.GET_BATCH_REQUEST, handleGetBatch),
+    takeEvery(ActionTypeBatchList.GETONE_BATCHLIST_REQUEST, handleGetOneBatchList),
+
+    //to edit data
+    takeEvery(ActionTypeBatchList.EDIT_BATCHLIST_REQUEST, handleEditBatch),
+    
   ])
 }
 

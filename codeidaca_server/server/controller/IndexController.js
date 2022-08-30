@@ -5,6 +5,8 @@ import AddressTypeController from "./AddressTypeController"
 import CountryController from "./CountryController"
 import ProvinceController from "./ProvinceController"
 import CityController from "./CityController"
+import ListController from './ListController'
+import Test from './Test'
 
 export default{
     UserController,
@@ -13,5 +15,7 @@ export default{
     AddressTypeController,
     CountryController,
     ProvinceController,
-    CityController
+    CityController,
+    ListController,
+    Test
 }
