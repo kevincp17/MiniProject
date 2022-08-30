@@ -1,4 +1,5 @@
 const config = {
+    myDomain : 'http://localhost:3001',
     domain : 'http://localhost:3001/codeid',
     urlImage : 'http://localhost:3001/codeid/api/images',
     domainAuth : 'http://localhost:3001/codeid/auth/',
