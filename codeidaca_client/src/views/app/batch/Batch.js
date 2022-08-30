@@ -1,17 +1,3 @@
-// import React from 'react'
-// import Page from '../../../component/commons/Page';
-// import { useNavigate, NavLink, Link, useLocation } from 'react-router-dom';
-
-// export default function Batch() {
-//   let navigate = useNavigate();
-//   return (
-//     <Page title='Batch' titleButton='Create' onClick={() => navigate('/app/batch/new')}>
-//       <h2>Test</h2>
-//     </Page>
-//   )
-// }
-
-
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetBatchRequest } from '../../../redux-saga/actions/Test'
@@ -101,6 +87,18 @@ export default function Batch() {
             
                                                 <button type="button" className="cursor-pointer inline-flex justify-center py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => onClick(isi.user_entity_id)}>Edit</button>
 
+                                                {/* {
+                                        displayEdit
+                                            ?
+                                            <EditBatch
+                                                closeAdd={() => setDisplayEdit(false)}
+                                                onRefresh={() => setRefresh(true)}
+                                                id={id}
+                                                setDisplay={setDisplayEdit}
+                                            />
+                                            :
+                                            display
+                                    } */}
 
                                             </div>
                                         </div>
