@@ -20,6 +20,9 @@ import {
   handleAddCity,handleDelCity,handleEditCity,handleGetCity,handleGetOneCity
 } from './MasterLocationSaga'
 
+// Dashboard Apply - Bootcamp
+import * as ActionTypeBootcampApply from "../constants/BootcampApply"
+import { handleGetBootcamp, handleApplyBootcamp, handleResetApplyBootcamp } from "./BootcampApplySaga"
 
 function *watchAll() {
   yield all([
@@ -55,6 +58,13 @@ function *watchAll() {
     takeEvery(ActionMasterLocation.ADD_CITY_REQUEST,handleAddCity),
     takeEvery(ActionMasterLocation.GETONE_CITY_REQUEST,handleGetOneCity),
     takeEvery(ActionMasterLocation.EDIT_CITY_REQUEST,handleEditCity),
+
+    takeEvery(ActionTypeBootcampApply.GET_BOOTCAMP_REQUEST, handleGetBootcamp),
+    takeEvery(
+      ActionTypeBootcampApply.APPLY_BOOTCAMP_REQUEST,
+      handleApplyBootcamp
+    ),
+    takeEvery(ActionTypeBootcampApply.RESET_APPLY_BOOTCAMP_REQUEST, handleResetApplyBootcamp)
   ])
 }
 

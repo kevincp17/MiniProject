@@ -7,6 +7,9 @@ import ProvinceReduce from './ProvinceReducer';
 import CityReduce from './CityReducer';
 import MasterLocationReduce from './MasterLocationReducer';
 
+// Dashboard Apply - Bootcamp
+import bootcampApplyReducer from "./BootcampApplyReducer"
+
 const rootReducer = combineReducers({
   userState : userReducer,
   programEntityState:ProgramEntityReduce,
@@ -14,7 +17,8 @@ const rootReducer = combineReducers({
   countryState:CountryReduce,
   provinceState:ProvinceReduce,
   cityState:CityReduce,
-  masterLocationState:MasterLocationReduce
+  masterLocationState:MasterLocationReduce,
+  bootcampApply: bootcampApplyReducer
 });
 
 export default rootReducer;

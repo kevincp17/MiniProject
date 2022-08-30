@@ -21,7 +21,9 @@ import Category from './views/app/setting/MasterCategory/indexCategory'
 import Module from './views/app/setting/MasterModule/indexModule'
 import Skill from './views/app/setting/MasterSkill/indexSkill'
 
-
+// Dashboard Apply - Bootcamp
+import BootcampApply from "./views/bootcamp/BootcampApply"
+import BootcampList from "./views/bootcamp/BootcampList"
 
 export default function Routes(isLoggedIn) {
   return useRoutes([
@@ -63,6 +65,20 @@ export default function Routes(isLoggedIn) {
         { path: 'hiring', element: isLoggedIn ? <Hiring /> : <Navigate to="/auth/signin"/> },
         { path: 'setting', element: isLoggedIn ? <Setting /> : <Navigate to="/auth/signin"/> },
       ]
+    },
+    {
+      path: "/bootcamp",
+      element: <AppLayout />,
+      children: [
+        {
+          path: "dashboard/:progId",
+          element: isLoggedIn ? <BootcampApply /> : <Navigate to="/auth/signin" />
+        },
+        {
+          path: "list",
+          element: isLoggedIn ? <BootcampList /> : <Navigate to="/auth/signin" />,
+        },
+      ],
     },
     { path: '*', element: <Navigate to="/404" replace /> }
   ]);
