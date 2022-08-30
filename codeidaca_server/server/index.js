@@ -41,13 +41,13 @@ app.use(async (req,res,next) =>{
 
 // call routes
 app.use(config.URL_DOMAIN+"/auth",routes.UserRoute)
-app.use(config.URL_DOMAIN+"/batch",routes.BatchRoute)
 app.use(config.URL_DOMAIN+"/program_entity",routes.ProgramEntityRoute)
 // app.use(config.URL_IMAGE+"/program_entity",routes.ProgramEntityRoute)
 app.use(config.URL_DOMAIN+"/address_type",routes.AddressTypeRoute)
 app.use(config.URL_DOMAIN+"/country",routes.CountryRoute)
 app.use(config.URL_DOMAIN+"/province",routes.ProvinceRoute)
 app.use(config.URL_DOMAIN+"/city",routes.CityRoute)
+app.use(config.URL_API+"/batch", routes.BatchRoute)
 
 //use middleware to handle error from others modules
 app.use(middleware.handleError);
