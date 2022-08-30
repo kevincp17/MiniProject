@@ -11,6 +11,8 @@ import models from '../models/init-models'
 
 //passport.use(adminStrategy())
 
+const { Op } = require("sequelize");
+
 passport.use(new Strategy({
     usernameField: 'username',
     passwordField: 'password'
@@ -18,18 +20,29 @@ passport.use(new Strategy({
     async function (username, password, cb) {
         try {
             const result = await models.users.findOne({
-              include:[{model:models.roles, as:'usro_role_id_roles'}],  where: { user_name: username }
+                subQuery: false, //tambain ini biar bisa join ke users_email
+                include:[
+                    {model:models.roles, as:'usro_role_id_roles'},
+                    {model:models.users_email, as:'users_emails'}
+                ],  
+                // where: {
+                //     user_name: username,
+                // }
+                where: { 
+                    [Op.or]: [
+                        { user_name: username },
+                        { '$users_emails.pmail_address$': username } //bungkus pake $$ biar bisa di panggil
+                    ]
+                }
             });
+            if(result == null) return cb(null, { message: 'Incorrect username or email.' }); //check apakah username atau email ada di database
+            const { user_name, user_entity_id, user_password,usro_role_id_roles:[{role_name}],users_emails:[{pmail_address}]} = result.dataValues;
             
-            const { user_name, user_entity_id, user_password,usro_role_id_roles:[{role_name}]} = result.dataValues;
             const compare = await bcrypt.compare(password, user_password);
-
-            if (compare) return cb(null, { username: user_name, userId: user_entity_id, userRoles: role_name})
-
-
-
+            if(!compare) return cb(null, { message: 'Incorrect password.' }); //check apakah password benar
+            if (compare) return cb(null, { username: user_name, userId: user_entity_id, userRoles: role_name,userEmail:pmail_address, message: 'Login success' }); //kalau benar kirim ini !
         } catch (error) {
-            return cb(null, error.message)
+            return cb(null, {message:error.message})
         }
 
         cb(null, false)
@@ -43,17 +56,44 @@ module.exports = {
     login: login,
     ensureAdmin: ensureAdmin,
     ensureSeller: ensureSeller,
-    refreshToken : refreshToken
+    refreshToken : refreshToken,
+    logout: logout,
+    verify: verifyToken
+}
+
+async function logout(req, res) {
+    res.clearCookie('jwt')
+    return res.status(202).json({ message: "Logout success" });
+}
+
+async function verifyToken(req, res,next) {
+    const token = req.cookies.jwt
+    if(!token) return res.status(401).json({ message: "No token provided" });
+    try {
+        // const decoded = jwt.verify(token, jwtSecret)
+        // req.user = decoded
+        jwt.verify(token, jwtSecret, (err, decoded) => {
+            if(err) return res.status(401).json({ message: "Invalid token" });
+            req.user = decoded.username
+            next()
+        })
+    } catch (error) {
+        return res.status(401).json({ message: "Token is not valid" });
+    }
 }
 
 
-
 async function login(req, res, next) {
-    const token = await sign({ username: req.user.username, roleType: req.user.userRoles });
-    const { userId, username, email, userRoles } = req.user;
-    res.cookie('jwt', token, { httpOnly: true })
+    if(req.user.username == null){ //kalau data tidak ditemukan
+        // res.cookie('jwt', null, { httpOnly: true })
+        res.status(404).json({ success: false, token: null, message: req.user.message });
+    } else{ //kalau data ditemukan
+        const token = await sign({ username: req.user.username, roleType: req.user.userRoles });
+        const { userId, username, email, userRoles, userEmail } = req.user;
 
-    res.json({ profile: { userId, username, email, userRoles }, success: true, token: token })
+        res.cookie('jwt', token, { httpOnly: true })
+        res.json({ profile: { userId, username, email, userRoles, userEmail }, success: true, token: token })
+    }
 }
 
 
@@ -97,44 +137,55 @@ async function verify(jwtString = '') {
 }
 
 async function refreshToken(req, res) {
-    const { refreshToken: requestToken } = req.body;
-
-    if (requestToken == null) {
-        return res.status(403).json({ message: "Refresh Token is required!" });
+    try{
+        const refreshToken = req.cookies.refreshToken
+        if (!refreshToken) return res.status(401).json({ message: "Refresh Token is required!" });
+    }catch(err){
+        console.log(log)
     }
-
-    try {
-        const result = await models.tokens.findOne({
-            where: { token_id: refreshToken }
-        });
-
-        if (!refreshToken) {
-            res.status(403).json({ message: "Refresh token is not in database!" });
-            return;
-        }
-
-        if (result.token_expire_date.getTime() < new Date().getTime()) {
-            res.status(403).json({
-                message: "Refresh token was expired. Please make a new signin request",
-            });
-            return;
-        }
-
-        let newAccessToken = jwt.sign({ id: user.id }, config.secret, {
-            expiresIn: config.jwtExpiration,
-          });
-
-        return res.status(200).json({
-            accessToken: newAccessToken,
-            refreshToken: refreshToken.token,
-        });
-
-    } catch (error) {
-        return res.status(500).send({ message: error });
-    }
-
-
 }
+
+// punya kak naufal
+// async function refreshToken(req, res) {
+//     const { refreshToken: requestToken } = req.body;
+
+//     if (requestToken == null) {
+//         return res.status(403).json({ message: "Refresh Token is required!" });
+//     }
+
+//     try {
+//         const result = await models.tokens.findOne({
+//             where: { token_id: refreshToken }
+//         });
+
+//         if (!refreshToken) {
+//             res.status(403).json({ message: "Refresh token is not in database!" });
+//             return;
+//         }
+
+//         if (result.token_expire_date.getTime() < new Date().getTime()) {
+//             res.status(403).json({
+//                 message: "Refresh token was expired. Please make a new signin request",
+//             });
+//             return;
+//         }
+
+//         let newAccessToken = jwt.sign({ id: user.id }, config.secret, {
+//             expiresIn: config.jwtExpiration,
+//           });
+
+//         return res.status(200).json({
+//             accessToken: newAccessToken,
+//             refreshToken: refreshToken.token,
+//         });
+
+//     } catch (error) {
+//         return res.status(500).send({ message:"Token error : "  + error});
+//     }
+
+
+// }
+
 
 // function adminStrategy() {
 
