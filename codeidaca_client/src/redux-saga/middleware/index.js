@@ -5,6 +5,7 @@ import * as ActionTypeProgramEntity from '../constants/ProgramEntity';
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
 import * as ActionMasterLocation from '../constants/MasterLocation'
+import * as ActionTypeBatch from '../constants/Batch'
 
 
 import {handleSignup,handleSignin,handleSignout} from './UserSaga'
@@ -19,6 +20,7 @@ import {
   handleAddProvince,handleDelProvince,handleEditProvince,handleGetProvince,handleGetOneProvince,
   handleAddCity,handleDelCity,handleEditCity,handleGetCity,handleGetOneCity
 } from './MasterLocationSaga'
+import { handleGetBatch, handleAddBatch } from './BatchSaga';
 
 
 function *watchAll() {
@@ -55,6 +57,9 @@ function *watchAll() {
     takeEvery(ActionMasterLocation.ADD_CITY_REQUEST,handleAddCity),
     takeEvery(ActionMasterLocation.GETONE_CITY_REQUEST,handleGetOneCity),
     takeEvery(ActionMasterLocation.EDIT_CITY_REQUEST,handleEditCity),
+
+    takeEvery(ActionTypeBatch.GET_BATCH_REQUEST, handleGetBatch),
+    takeEvery(ActionTypeBatch.ADD_BATCH_REQUEST, handleAddBatch)
   ])
 }
 

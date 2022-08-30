@@ -20,6 +20,7 @@ import Location from './views/app/setting/MasterLocation/indexLocation'
 import Category from './views/app/setting/MasterCategory/indexCategory'
 import Module from './views/app/setting/MasterModule/indexModule'
 import Skill from './views/app/setting/MasterSkill/indexSkill'
+import AddBatch from './views/app/batch/AddBatch';
 
 
 
@@ -56,7 +57,8 @@ export default function Routes(isLoggedIn) {
       children: [
         { path: 'dashboard', element: isLoggedIn ? <Dashboard/> : <Navigate to="/auth/signin"/>},
         { path: 'candidat', element: isLoggedIn ? <Candidat/>: <Navigate to="/auth/signin"/> },
-        { path: 'batch', element: isLoggedIn ? <Batch /> : <Navigate to="/auth/signin"/>},
+        { path: 'batch', element: <Batch /> },
+        // { path: 'batch', element: isLoggedIn ? <Batch /> : <Navigate to="/auth/signin"/>},
         { path: 'placement', element: isLoggedIn ? <Placement />: <Navigate to="/auth/signin"/> },
         { path: 'talent', element: isLoggedIn ? <Talent />: <Navigate to="/auth/signin"/> },
         { path: 'curriculum', element: isLoggedIn ? <Curriculum />: <Navigate to="/auth/signin"/> },
@@ -64,9 +66,13 @@ export default function Routes(isLoggedIn) {
         { path: 'setting', element: isLoggedIn ? <Setting /> : <Navigate to="/auth/signin"/> },
       ]
     },
+    {
+      path: '/app/batch',
+      element:  <AppLayout/>,
+      children: [
+        { path: 'new', element: <AddBatch /> }
+      ]
+    },
     { path: '*', element: <Navigate to="/404" replace /> }
   ]);
 }
-
-
-
