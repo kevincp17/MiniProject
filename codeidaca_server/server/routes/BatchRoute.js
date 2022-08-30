@@ -1,11 +1,10 @@
 import { Router } from "express";
-import indexController from "../controller/IndexController";
+import IndexController from "../controller/IndexController";
 
-const router=new Router()
+const router = Router();
 
-router.get('/',indexController.BatchController.findAll)
-router.get('/:id',indexController.BatchController.findOne)
-router.post('/',indexController.BatchController.create)
-router.put('/:id',indexController.BatchController.update)
+router.get("/:id", IndexController.BatchController.findById);
+router.put("/:id", IndexController.BatchController.updateBatch, IndexController.BatchController.addSudent);
+router.get("/",IndexController.BatchController.findAll)
 
-export default router
+export default router;

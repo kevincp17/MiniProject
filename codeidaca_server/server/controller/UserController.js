@@ -80,7 +80,11 @@ const signin = async (req, res) => {
 const allget = async(req,res) => {
     try {
         const result = await req.context.models.users.findAll({
-            include: { all: true }
+            include:[{
+                model:req.context.models.roles,
+                as:"usro_role_id_roles",
+                required:true,
+            }]
         })
          res.send(result)
     } catch (error) {

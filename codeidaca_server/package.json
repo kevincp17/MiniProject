@@ -13,7 +13,7 @@
     "buildw": "npm run cleanw && npm run build-server",
     "test": "jest",
     "sql": "npx sequelize-cli db:seed:all",
-    "reverse:db": "sequelize-auto -o ./schemas -d BootcampRevamp -h localhost -u postgres -p 5432 -x kevingreat -e postgres -l esm"
+    "reverse:db": "sequelize-auto -o ./schemas -d codeid -h localhost -u postgres -p 5432 -x admin -e postgres"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -34,7 +34,9 @@
     "passport-local": "^1.0.0",
     "pg": "^8.7.1",
     "pino-noir": "^2.2.1",
-    "sequelize": "^5.21.7"
+    "sequelize": "^5.21.7",
+    "sequelize-cli":"^6.4.1",
+    "@types/sequelize":"^4.28.14"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.7",

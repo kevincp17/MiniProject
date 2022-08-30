@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class skill_type extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('skill_type', {
     skty_name: {
       type: DataTypes.STRING(55),
       allowNull: false,
@@ -24,5 +21,4 @@ export default class skill_type extends Model {
       },
     ]
   });
-  }
-}
+};

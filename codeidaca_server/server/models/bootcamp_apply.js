@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class bootcamp_apply extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('bootcamp_apply', {
     boap_prog_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -45,6 +42,13 @@ export default class bootcamp_apply extends Model {
     timestamps: false,
     indexes: [
       {
+        name: "boap_entity_unique",
+        unique: true,
+        fields: [
+          { name: "boap_entity_id" },
+        ]
+      },
+      {
         name: "bootcamp_apply_pkey",
         unique: true,
         fields: [
@@ -54,5 +58,4 @@ export default class bootcamp_apply extends Model {
       },
     ]
   });
-  }
-}
+};

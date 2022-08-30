@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class bootcamp_apply_progress extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('bootcamp_apply_progress', {
     bapr_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -25,7 +22,7 @@ export default class bootcamp_apply_progress extends Model {
       primaryKey: true,
       references: {
         model: 'bootcamp_apply',
-        key: 'boap_prog_id'
+        key: 'boap_entity_id'
       }
     },
     boar_comment: {
@@ -65,5 +62,4 @@ export default class bootcamp_apply_progress extends Model {
       },
     ]
   });
-  }
-}
+};

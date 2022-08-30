@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class country extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('country', {
     country_code: {
       type: DataTypes.STRING(3),
       allowNull: false,
@@ -40,5 +37,4 @@ export default class country extends Model {
       },
     ]
   });
-  }
-}
+};
