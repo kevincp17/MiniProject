@@ -4,6 +4,9 @@ import CategoryAdd from './CategoryAdd'
 import CategoryEdit from './CategoryEdit'
 import "./Modal.css";
 import { PlusIcon, PencilIcon, HomeIcon, XIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook } from "@fortawesome/free-brands-svg-icons"
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 
 export default function CategoryView() {
@@ -88,30 +91,21 @@ if(modal) {
 
     <div>
         <div>
-            <div className='text-sm border-solid border-2 border-spacing-2 border-gray-200 px-6 py-3 '>
+            <div className='text-sm border-solid border-2 border-spacing-2 border-gray-200 px-6 py-3 w-5/6'>
                 <div className='h-6 w-6 float-left mr-3'>
-                    <a href='#'>{HomeIcon()}
+                    <a href='#'>
                     </a>    
                 </div>
                 <h1>
-                    <a className='text-blue-500 float-left' href="#">Home</a>
-                    <span  className='h-5 w-5 float-left'>{ChevronRightIcon()}</span>
+                <span  className='h-1 w-1 mr-2 float-left'><FontAwesomeIcon icon={solid('house-chimney')}/></span>
+                    <a className='text-blue-500 ml-2 float-left' href="#">Home</a>
+                    <span  className='h-1 w-1 ml-2 mr-2 float-left'><FontAwesomeIcon icon={solid('angle-right')}/></span>
                     <a className='text-blue-500 float-left' href="#">Master</a>                    
-                    <span  className='h-5 w-5 float-left'>{ChevronRightIcon()}</span>
+                    <span  className='h-1 w-1 ml-2 mr-2 float-left'><FontAwesomeIcon icon={solid('angle-right')}/></span>
                     Category
                 </h1>
             </div>
             <div>
-            <div className='float-left flex h-96 w-1/6 justify-center border border-solid border-gray-200'>
-                <div className='center w-2/3 mt-12'>
-                    <h1 className='text-blue-500 '>Master Data</h1>
-                    <h1 className='mt-2 text-blue-500 '><a href="">-Category</a></h1>
-                    <h1 className='mt-2 text-blue-500 '><a href="">-Skill</a></h1>
-                    <h1 className='mt-2 text-blue-500 '><a href="">-Modules</a></h1>
-                    <h1 className='mt-2 text-blue-500 '><a href="">-Address Type</a></h1>
-                    <h1 className='mt-2 text-blue-500 '><a href="">-Locations</a></h1>
-                </div>
-            </div>
             <div className='float-left w-5/6'>
                 <h2 className='text-2xl mt-2 ml-4 mb-2'>Category</h2>
                 {
@@ -138,8 +132,8 @@ if(modal) {
                                 <th className="px-6 py-2 text-center">Category Name</th>
                                 <th className="px-6 py-2 text-center">Parent Category</th>
                                 <th className="px-6 py-2 text-center "><button onClick={() => setDisplay(true)} className="text-white-400 border-white rounded-md border-solid border-2 w-16 h-8">
-                                    <strong className='h-5 w-5 float-left'> {PlusIcon()} </strong>
-                                    <strong>Add</strong>
+                                    <strong className='h-5 w-5 float-left'> <FontAwesomeIcon icon={solid('plus')}/> </strong>
+                                    <strong> Add</strong>
                                     </button></th>
                                 </thead>
                                 <tbody className='divide-y-2 divide-slate-400/25 '>
@@ -152,8 +146,8 @@ if(modal) {
                                                 <td className="px-6 py-2 text-center ">
 {//                                                  <button onClick={() => setDisplayEdit(true)} className='mr-3 text-green-500 '>{PencilIcon()} edit </button>
 }
-                                                    <button onClick={() => onClick({ cateID: cate.cate_id })} className='mr-3 text-blue-500 '>{PencilIcon()} edit </button>
-                                                    <button onClick={() => toggleModal({cateID: cate.cate_id})} className='text-red-500 h-7 w-7 '>{XIcon()} Delete </button>
+                                                    <button onClick={() => onClick({ cateID: cate.cate_id })} className='mr-3 text-blue-500 '><FontAwesomeIcon icon={solid('pen-to-square')}/> edit </button>
+                                                    <button onClick={() => toggleModal({cateID: cate.cate_id})} className='text-red-500 mr-3 '><FontAwesomeIcon icon={solid('x')}/>Delete </button>
                                                     {modal && (
                                                         <div className="modal">
                                                         <div onClick={toggleModal} className="overlay"></div>
