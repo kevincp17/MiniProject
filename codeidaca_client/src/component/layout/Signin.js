@@ -24,24 +24,28 @@ export default function Signin() {
   
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+    username: Yup
+      .string()
+      // .email('Must be a valid email')
+      .min(4, 'your username or email is too short')
+      .max(255).required('your email not valid'),
     password: Yup
       .string()
-      .min(5)
-      .max(5)
+      .min(4, 'Password must be at least 8 characters')
+      .max(25, 'Password must be at most 25 characters')
       .required(),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: ""
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      console.log(values);
+
       let payload = {
-        email: values.email,
+        username: values.username,
         password: values.password
       };
 
@@ -58,14 +62,11 @@ export default function Signin() {
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <a href='/'>
-              <img
-                className="mx-auto h-12 w-auto"
-                src="../assets/images/codeid.png"
-                alt="Workflow"
-              />
-            </a>
-            
+            <img
+              className="mx-auto h-12 w-auto"
+              src="../assets/images/codeid.png"
+              alt="Workflow"
+            />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Or{' '}
@@ -78,23 +79,23 @@ export default function Signin() {
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
+                <label htmlFor="username" className="sr-only">
+                  Username or Email address
                 </label>
                 <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  value={formik.values.email}
+                  id="username"
+                  name="username"
+                  type="text"
+                  value={formik.values.username}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  autoComplete="email"
+                  autoComplete="username"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  placeholder="Username or Email address"
                 />
-                {formik.touched.email && formik.errors.email ? (
-                  <span className="mt-2 text-sm text-red-600">{formik.errors.email}</span>
+                {formik.touched.username && formik.errors.username ? (
+                  <span className="mt-2 text-sm text-red-600">{formik.errors.username}</span>
                 ) : null}
               </div>
               <div>

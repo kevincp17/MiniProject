@@ -131,15 +131,15 @@ function initModels(sequelize) {
   const talent_apply = _talent_apply.init(sequelize, DataTypes);
   const talent_apply_progress = _talent_apply_progress.init(sequelize, DataTypes);
   const user_accounts = _user_accounts.init(sequelize, DataTypes);
-  const users = _users.init(sequelize, DataTypes);
+  const users = _users(sequelize, DataTypes);
   const users_address = _users_address.init(sequelize, DataTypes);
   const users_education = _users_education.init(sequelize, DataTypes);
-  const users_email = _users_email.init(sequelize, DataTypes);
+  const users_email = _users_email(sequelize, DataTypes);
   const users_experiences = _users_experiences.init(sequelize, DataTypes);
   const users_experiences_skill = _users_experiences_skill.init(sequelize, DataTypes);
   const users_media = _users_media.init(sequelize, DataTypes);
   const users_phones = _users_phones.init(sequelize, DataTypes);
-  const users_roles = _users_roles.init(sequelize, DataTypes);
+  const users_roles = _users_roles(sequelize, DataTypes);
   const users_skill = _users_skill.init(sequelize, DataTypes);
 
   batch.belongsToMany(users, { as: 'bast_entity_id_users', through: batch_student, foreignKey: "bast_batch_id", otherKey: "bast_entity_id" });
@@ -282,8 +282,8 @@ function initModels(sequelize) {
   program_entity.hasMany(sales_order_detail, { as: "sales_order_details", foreignKey: "sode_prog_id"});
   city.belongsTo(province, { as: "city_prov", foreignKey: "city_prov_id"});
   province.hasMany(city, { as: "cities", foreignKey: "city_prov_id"});
-  users.belongsTo(roles, { as: "user_current_role_role", foreignKey: "user_current_role"});
-  roles.hasMany(users, { as: "users", foreignKey: "user_current_role"});
+  // users.belongsTo(roles, { as: "user_current_role_role", foreignKey: "user_current_role"});
+  // roles.hasMany(users, { as: "users", foreignKey: "user_current_role"});
   users_roles.belongsTo(roles, { as: "usro_role", foreignKey: "usro_role_id"});
   roles.hasMany(users_roles, { as: "users_roles", foreignKey: "usro_role_id"});
   bootcamp_apply_progress.belongsTo(route_actions, { as: "bapr_roac", foreignKey: "bapr_roac_id"});
