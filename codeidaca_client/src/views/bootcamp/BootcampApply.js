@@ -143,7 +143,7 @@ export default function BootcampApply() {
           field_study: data.userEducation[0].usdu_field_study,
         });
 
-        setEducationId(data.userEducation.usdu_id);
+        setEducationId(data.userEducation[0].usdu_id);
       } else {
         setIsApplied(false);
         setShowApplicationInfo(false);
