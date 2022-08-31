@@ -12,7 +12,10 @@ import BootcampListController from "./BootcampListController"
 import ListController from './ListController'
 import Test from './Test'
 
-export default{
+//BatchCandidat
+import candidateCtrl from "./candidateCtrl"
+
+export default {
     UserController,
     BatchController,
     ProgramEntityController,
@@ -23,6 +26,7 @@ export default{
     DashboardApplyController,
     BootcampListController,
     ListController,
-    Test
+    Test,
+    candidateCtrl
 }
 
