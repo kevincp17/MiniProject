@@ -25,13 +25,15 @@ function* handleSignin(action) {
     try {
         const result = yield call(apiUser.signin,payload);
         if (Object.keys(result.data.profile).length === 0){
-            yield put(doShowAuthMessage({message : 'user or password not match, try again'}));
+            yield put(doShowAuthMessage({message : result.data.message, type : 'error'}));
         }
         else{
-            localStorage.setItem('@token', result.data.token);
+            sessionStorage.setItem('@profile', JSON.stringify(result.data.profile));
+            sessionStorage.setItem('@token', result.data.token);
+            sessionStorage.setItem('@status', result.data.success);
             yield put(doSigninSucceed(result.data));
         }
-        //localStorage.setItem('@profile', JSON.stringify(result.data.profile));
+        // localStorage.setItem('@profile', JSON.stringify(result.data.profile));
      
     } catch (error) {
         yield put(doShowAuthMessage({message : 'user or password not match, try again'}));
@@ -41,6 +43,7 @@ function* handleSignin(action) {
 function* handleSignout(action) {
     const {payload} = action;
     try {
+        sessionStorage.clear();
         localStorage.clear();
         yield put(doSignoutSucceed(payload));
     } catch (error) {

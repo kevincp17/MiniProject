@@ -1,10 +1,11 @@
 import bcrypt from 'bcrypt';
+import { sequelize } from "../models/init-models"
 const SALT_ROUND = 10;
 
 const entity = async(req,res,next) => {
     try {
         const result = await req.context.models.entity.create({
-            entity_id : null
+            entity_id : null //gak bisa null harus diisi angka dan itu auto increment dari data yang ada di table entity
         })
         req.entitas = {
             entity_id : result.entity_id
@@ -16,7 +17,7 @@ const entity = async(req,res,next) => {
 }
 
 const signup = async (req, res, next) => {
-    const { username, first, last, password } = req.body;
+    const { username, password } = req.body;
     const enti = req.entitas
     let hashPassword = password;
     hashPassword = await bcrypt.hash(hashPassword, SALT_ROUND);
@@ -24,8 +25,6 @@ const signup = async (req, res, next) => {
         const result = await req.context.models.users.create({
             user_entity_id : enti.entity_id,
             user_name: username,
-            user_first_name : first,
-            user_last_name : last,
             user_password: hashPassword,
             user_modified_date : new Date()
         }
@@ -58,31 +57,62 @@ const userRole = async(req,res) => {
 
 // use sigin with token in authJWT
 const signin = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body; // email : riko@gmail.com pw : admin
 
     try {
         const result = await req.context.models.users.findOne({
-            where: { user_email: email }
+            include:{
+                model:req.context.models.users_email,
+                as:"users_emails",
+                required:true,
+                where:{
+                    pmail_address:email
+                }
+            }
         });
-        const { user_name, user_email, user_password } = result.dataValues;
+        const { user_name, user_password } = result.dataValues;
+        // return res.send({password, user_password});
         const compare = await bcrypt.compare(password, user_password);
+        // const compare = (password == user_password) ? true : false;
+        // return res.send(compare);
         if (compare) {
-            return res.send({ user_name, user_email });
+            return res.send({ user_name, email });
         } else {
             return res.sendStatus(404);
         }
 
     } catch (error) {
-        return res.sendStatus(404);
+        return res.status(404).send("email atau password anda tidak cocok");
     }
 }
 
 const allget = async(req,res) => {
     try {
         const result = await req.context.models.users.findAll({
-            include: { all: true }
+            include:[{
+                model:req.context.models.roles,
+                as:"usro_role_id_roles",
+                required:true,
+            }]
         })
-         res.send(result)
+        res.send(result)
+    } catch (error) {
+        res.status(404).json(error.message);
+    }
+}
+const findOne = async(req,res) => {
+    try {
+        const result = await req.context.models.users.findOne({
+            include:{
+                model:req.context.models.users_email,
+                as:"users_emails",
+                required:true,
+                where:{
+                    pmail_entity_id:req.params.id
+                }
+            }
+        })
+        res.send(result)
     } catch (error) {
         res.status(404).json(error.message);
     }
@@ -93,5 +123,6 @@ export default {
     signup,
     signin,
     allget,
-    userRole
+    userRole,
+    findOne
 }

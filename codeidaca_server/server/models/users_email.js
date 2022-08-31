@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class users_email extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('users_email', {
     pmail_entity_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -39,9 +36,9 @@ export default class users_email extends Model {
         fields: [
           { name: "pmail_entity_id" },
           { name: "pmail_id" },
+          { name: "pmail_address" }, //jangan lupa tambah lagi ini kalau mau manggil di join nanti
         ]
       },
     ]
   });
-  }
-}
+};

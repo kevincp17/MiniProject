@@ -5,8 +5,12 @@ import AddressTypeRoute from './AddressTypeRoute'
 import CountryRoute from './CountryRoute'
 import ProvinceRoute from './ProvinceRoute'
 import CityRoute from './CityRoute'
+// dashboardApply-(bootcamp)
 import DashboardApplyRoute from "./DashboardApplyRoute"
 import BootcampListRoute from  "./BootcampListRoute"
+
+import ListRoute from './ListRoute'
+import TestRoute from './TestRoute'
 
 export default{
     UserRoute,
@@ -17,5 +21,7 @@ export default{
     ProvinceRoute,
     CityRoute,
     DashboardApplyRoute,
-    BootcampListRoute
+    BootcampListRoute,
+    ListRoute,
+    TestRoute
 }
