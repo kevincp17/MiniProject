@@ -2,11 +2,11 @@ import * as ActionType from '../constants/User';
 
 const INIT_STATE = {
     
-    userProfile:{},
+    userProfile:JSON.parse(sessionStorage.getItem('@profile')),
     isLogout : false,
-    isLoading : true,
-    isLoggedIn : false,
-    token : localStorage.getItem('@token'),
+    isLoading : JSON.parse(sessionStorage.getItem('@status')) === true ? false : true,
+    isLoggedIn : JSON.parse(sessionStorage.getItem('@status')) === true ? true : false,
+    token : sessionStorage.getItem('@token'),
     message : ''
 }
 

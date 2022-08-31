@@ -5,8 +5,12 @@ import AddressTypeController from "./AddressTypeController"
 import CountryController from "./CountryController"
 import ProvinceController from "./ProvinceController"
 import CityController from "./CityController"
+// dashboardApply-(bootcamp)
 import DashboardApplyController from "./DashboardApplyController"
 import BootcampListController from "./BootcampListController"
+
+import ListController from './ListController'
+import Test from './Test'
 
 export default{
     UserController,
@@ -18,4 +22,7 @@ export default{
     CityController,
     DashboardApplyController,
     BootcampListController,
+    ListController,
+    Test
 }
+

@@ -6,6 +6,8 @@ import CountryReduce from './CountryReducer';
 import ProvinceReduce from './ProvinceReducer';
 import CityReduce from './CityReducer';
 import MasterLocationReduce from './MasterLocationReducer';
+import BatchListReduce from './BatchListReducer';
+import BatchReduce from './Test';
 
 // Dashboard Apply - Bootcamp
 import bootcampApplyReducer from "./BootcampApplyReducer"
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   provinceState:ProvinceReduce,
   cityState:CityReduce,
   masterLocationState:MasterLocationReduce,
-  bootcampApply: bootcampApplyReducer
+  bootcampApply: bootcampApplyReducer,
+  batchListState : BatchListReduce, 
+  batchState : BatchReduce  
 });
 
 export default rootReducer;
