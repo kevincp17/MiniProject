@@ -11,6 +11,7 @@ import middleware  from "./helpers/middleware";
 //for access models to db
 import models,{sequelize} from "./models/init-models";
 import routes from './routes/IndexRoute'
+import uploadDownload from "./helpers/UploadDownloadHelper";
 
 // declare port
 const port = process.env.PORT || 3001;
@@ -51,6 +52,15 @@ app.use(config.URL_DOMAIN+"/city",routes.CityRoute)
 //dash batch evaluation
 app.use(config.URL_DOMAIN+'/test',routes.TestRoute)
 app.use(config.URL_DOMAIN+'/list',routes.ListRoute)
+
+// Dashboard Apply - Bootcamp
+app.use(config.URL_API + "/apply_bootcamp", routes.DashboardApplyRoute)
+app.use(config.URL_API + "/bootcamp_list", routes.BootcampListRoute)
+// show images
+app.use(config.URL_API+"/images/:filename",uploadDownload.showProductImage)
+// show cv
+app.use(config.URL_API+"/cv/:filename",uploadDownload.showUserCv)
+
 
 //use middleware to handle error from others modules
 app.use(middleware.handleError);
