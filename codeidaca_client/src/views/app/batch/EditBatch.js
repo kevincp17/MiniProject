@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik'
-import * as Yup from 'yup'
+import './popup.css'
 import { GetOneBatchRequestList, EditBatchListRequest, GetBatchRequestList } from '../../../redux-saga/actions/BatchListAction';
 
 export default function EditBatch(props) {
@@ -11,16 +11,19 @@ export default function EditBatch(props) {
 
     useEffect(() => {
         dispatch(GetOneBatchRequestList(props.id))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
-        console.log('isi listone')
-        console.log(listOne)
-    }, [listOne])
+        dispatch(GetBatchRequestList())
+    }, [dispatch])
+
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            user_first_name : list.user_first_name,
+            user_last_name : list.user_last_name,
+            bast_total_score : listOne.bast_total_score,
             bast_entity_id: listOne.bast_entity_id,
             bast_status: listOne.bast_status,
             bast_review: listOne.bast_review,
@@ -29,29 +32,41 @@ export default function EditBatch(props) {
         onSubmit: async (values) => {
             const payload = {
                 bast_entity_id: parseInt(listOne.bast_entity_id),
+                user_first_name: values.user_first_name,
+                user_last_name : values.user_last_name,
                 bast_status: values.bast_status,
                 bast_review: values.bast_review,
 
             }
             dispatch(EditBatchListRequest(payload))
-            console.log('ini payload')
-            console.log(EditBatchListRequest(payload))
+
             props.closeEdit();
-            window.alert('Data Succesfully Edited')
+            window.alert('Data Berhasil DiUbah')
             props.onRefresh();
         }
     })
 
     return (
         <div>
-            <div className='mx-auto overflow-hidden shadow-2xl h-full py-3 bg-slate-100' style={{ width: "290px", height: "200px", marginTop: "200px" }}>
-                <div className='mx-2 my-2'>
-
-                    <div className='flex align-items-center'>
-                        <div className='my-auto mr-2'>
-                            Status
-                        </div>
-                   <select
+        <div id='popup' classname='w-full' >
+            {/* <div className='mx-auto overflow-hidden shadow-2xl h-full py-3 bg-slate-100' style={{ width: "290px", height: "200px", marginTop: "200px" }}> */}
+            <div className='mx-2 my-2'>
+                <div className='font-medium text-lg'>
+                     Status
+                    <hr className='border-1 border-gray-400	mt-1' />
+                </div>
+                <br />
+                <div className='flex align-items-center font-medium'>
+                    <div className='my-auto'>
+                        Information
+                    </div>
+                </div>
+                <br />
+                <div className='flex align-items-center justify-between mt-3'>
+                    <div className='my-auto mr-2'>
+                        Status
+                    </div>
+                    <select
                         className="rounded w-3/4"
                         name="bast_status"
                         id="bast_status"
@@ -59,32 +74,32 @@ export default function EditBatch(props) {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         autoComplete="bast_status"
-                        >
-                        <option value="Stop">Stop</option>
+                    >
+            
                         <option value="Running">Running</option>
-                        </select>
-                    </div>
-                    <div className='flex align-items-center'>
-                        <div className='my-auto mr-2'>
-                            Review
-                        </div>
-                        <input
-                            className="mt-1 ml-1 focus:ring-indigo-500 focus:border-indigo-500 block w-4/5 shadow-sm sm:text-sm border-gray-300 rounded-md "
-                            type="text"
-                            name="bast_review"
-                            id="bast_review"
-                            value={formik.values.bast_review}
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            autoComplete="bast_review"
-                        />
-                    </div>
+                        <option value="Stop">Stop</option>
+                
+                    </select>
                 </div>
-                <div className='text-center'>
-                    <button type='submit' className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}> Simpan </button>
-                    <button className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setDisplay(false)}> Cancel </button>
+                <div className='mt-3'>
+                    <span className='block mb-1'>Review</span>
+                    <textarea
+                        className='w-full rounded'
+                        name="bast_review"
+                        id="bast_review"
+                        value={formik.values.bast_review}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        autoComplete="bast_review"
+                    />
+                    {formik.touched.bast_review && formik.errors.bast_review ? <span className="mt-2 text-sm text-red-600">{formik.errors.bast_review}</span> : null}
                 </div>
             </div>
+            <div className='text-center'>
+                <button className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setDisplay(false)}> Cancel </button>
+                <button type='submit' className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}> Simpan </button>
+            </div>
         </div>
-    )
+    </div>
+)
 }
