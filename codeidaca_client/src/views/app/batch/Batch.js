@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetBatchRequest } from '../../../redux-saga/actions/Test'
 import { GetBatchRequestList } from '../../../redux-saga/actions/BatchListAction'
-// import EditBatch from '../Modal/EditBatch'
 import EditBatch from './EditBatch'
-// import EditBatch from '../Modal/EditBatch'
 
 export default function Batch() {
     const { list } = useSelector(state => state.batchListState)
@@ -18,11 +16,13 @@ export default function Batch() {
 
     useEffect(() => {
         dispatch(GetBatchRequest())
-    }, [dispatch])
+        setRefresh(false)
+    }, [refresh])
 
     useEffect(() => {
         dispatch(GetBatchRequestList())
-    }, [dispatch])
+        setRefresh(false)
+    }, [refresh])
 
     const onClick = (empID) => {
         setDisplayEdit(true)
@@ -86,19 +86,6 @@ export default function Batch() {
                                                     <label className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'> {isi.bast_review} </label>
             
                                                 <button type="button" className="cursor-pointer inline-flex justify-center py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => onClick(isi.user_entity_id)}>Edit</button>
-
-                                                {/* {
-                                        displayEdit
-                                            ?
-                                            <EditBatch
-                                                closeAdd={() => setDisplayEdit(false)}
-                                                onRefresh={() => setRefresh(true)}
-                                                id={id}
-                                                setDisplay={setDisplayEdit}
-                                            />
-                                            :
-                                            display
-                                    } */}
 
                                             </div>
                                         </div>
