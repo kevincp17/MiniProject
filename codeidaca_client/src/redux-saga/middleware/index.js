@@ -4,54 +4,29 @@ import * as ActionTypeProgramEntity from "../constants/ProgramEntity";
 // import * as ActionTypeAddressType from '../constants/AddressType'
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
-import * as ActionMasterLocation from "../constants/MasterLocation";
-import * as ActionTypeBatchList from "../constants/BatchListConstants";
-import * as ActionTypeTest from "../constants/Test";
+import * as ActionMasterLocation from '../constants/MasterLocation'
+import * as ActionTypeBatchList from '../constants/BatchListConstants';
+import * as ActionTypeTest from '../constants/Test'
+import * as ActionTypeBootcampProgram from '../constants/BootcampProgram'
+import * as ActionTypeStudentReview from '../constants/StudentReview'
 
-import {
-  handleSignup,
-  handleSignin,
-  handleSignout,
-  handleSignupEmp,
-} from "./UserSaga";
-import {
-  handleGetFourProgram,
-  handleGetThreeCourse,
-  handleGetAlumniTestimony,
-} from "./ProgramEntitySaga";
-import {
-  handleGetBatchList,
-  handleGetOneBatchList,
-  handleEditBatch,
-} from "./BatchListMiddle";
-import { handleGetBatch } from "./TestSaga";
+import { handleSignup, handleSignin, handleSignout, handleSignupEmp } from './UserSaga'
+import { handleGetFourProgram, handleGetThreeCourse, handleGetAlumniTestimony } from './ProgramEntitySaga'
+import { handleGetBatchList, handleGetOneBatchList, handleEditBatch } from './BatchListMiddle'
+import { handleGetBatch } from './TestSaga';
+import { handleGetBootcampProgram, handleSearchProgram } from './BootcampProgramSaga';
+import { handleGetStudentReview } from './StudentReviewSaga';
 
 // import {handleAddAddressType,handleDelAddressType,handleEditAddressType,handleGetAddressType,handleGetOneAddressType} from './AddressTypeSaga'
 // import {handleAddCountry,handleDelCountry,handleEditCountry,handleGetCountry,handleGetOneCountry} from './CountrySaga'
 // import {handleAddProvince,handleDelProvince,handleEditProvince,handleGetProvince,handleGetOneProvince} from './ProvinceSaga'
 // import {handleAddCity,handleDelCity,handleEditCity,handleGetCity,handleGetOneCity} from './CitySaga'
 import {
-  handleAddAddressType,
-  handleDelAddressType,
-  handleEditAddressType,
-  handleGetAddressType,
-  handleGetOneAddressType,
-  handleAddCountry,
-  handleDelCountry,
-  handleEditCountry,
-  handleGetCountry,
-  handleGetOneCountry,
-  handleAddProvince,
-  handleDelProvince,
-  handleEditProvince,
-  handleGetProvince,
-  handleGetOneProvince,
-  handleAddCity,
-  handleDelCity,
-  handleEditCity,
-  handleGetCity,
-  handleGetOneCity,
-} from "./MasterLocationSaga";
+  handleAddAddressType, handleDelAddressType, handleEditAddressType, handleGetAddressType, handleGetOneAddressType,
+  handleAddCountry, handleDelCountry, handleEditCountry, handleGetCountry, handleGetOneCountry,
+  handleAddProvince, handleDelProvince, handleEditProvince, handleGetProvince, handleGetOneProvince,
+  handleAddCity, handleDelCity, handleEditCity, handleGetCity, handleGetOneCity
+} from './MasterLocationSaga'
 
 // Dashboard Apply - Bootcamp
 import * as ActionTypeBootcampApply from "../constants/BootcampApply";
@@ -68,39 +43,19 @@ function* watchAll() {
     takeEvery(ActionTypeUser.GET_SIGNIN_REQUEST, handleSignin),
     takeEvery(ActionTypeUser.GET_SIGNOUT_REQUEST, handleSignout),
 
-    takeEvery(
-      ActionTypeProgramEntity.GETFOUR_PROGRAM_REQUEST,
-      handleGetFourProgram
-    ),
-    takeEvery(
-      ActionTypeProgramEntity.GETTHREE_COURSE_REQUEST,
-      handleGetThreeCourse
-    ),
-    takeEvery(
-      ActionTypeProgramEntity.GETALUMNI_TESTIMONY_REQUEST,
-      handleGetAlumniTestimony
-    ),
+    takeEvery(ActionTypeProgramEntity.GETFOUR_PROGRAM_REQUEST, handleGetFourProgram),
+    takeEvery(ActionTypeProgramEntity.GETTHREE_COURSE_REQUEST, handleGetThreeCourse),
+    takeEvery(ActionTypeProgramEntity.GETALUMNI_TESTIMONY_REQUEST, handleGetAlumniTestimony),
 
-    takeEvery(
-      ActionMasterLocation.GET_ADDRESSTYPE_REQUEST,
-      handleGetAddressType
-    ),
-    takeEvery(
-      ActionMasterLocation.DEL_ADDRESSTYPE_REQUEST,
-      handleDelAddressType
-    ),
-    takeEvery(
-      ActionMasterLocation.ADD_ADDRESSTYPE_REQUEST,
-      handleAddAddressType
-    ),
-    takeEvery(
-      ActionMasterLocation.GETONE_ADDRESSTYPE_REQUEST,
-      handleGetOneAddressType
-    ),
-    takeEvery(
-      ActionMasterLocation.EDIT_ADDRESSTYPE_REQUEST,
-      handleEditAddressType
-    ),
+    takeEvery(ActionTypeBootcampProgram.GET_BOOTCAMPPROGRAM_REQUEST, handleGetBootcampProgram),
+    takeEvery(ActionTypeBootcampProgram.GET_SEARCHPROGRAM_REQUEST, handleSearchProgram),
+    takeEvery(ActionTypeStudentReview.GET_STUDENTREVIEW_REQUEST, handleGetStudentReview),
+
+    takeEvery(ActionMasterLocation.GET_ADDRESSTYPE_REQUEST, handleGetAddressType),
+    takeEvery(ActionMasterLocation.DEL_ADDRESSTYPE_REQUEST, handleDelAddressType),
+    takeEvery(ActionMasterLocation.ADD_ADDRESSTYPE_REQUEST, handleAddAddressType),
+    takeEvery(ActionMasterLocation.GETONE_ADDRESSTYPE_REQUEST, handleGetOneAddressType),
+    takeEvery(ActionMasterLocation.EDIT_ADDRESSTYPE_REQUEST, handleEditAddressType),
 
     takeEvery(ActionMasterLocation.GET_COUNTRY_REQUEST, handleGetCountry),
     takeEvery(ActionMasterLocation.DEL_COUNTRY_REQUEST, handleDelCountry),
@@ -111,10 +66,7 @@ function* watchAll() {
     takeEvery(ActionMasterLocation.GET_PROVINCE_REQUEST, handleGetProvince),
     takeEvery(ActionMasterLocation.DEL_PROVINCE_REQUEST, handleDelProvince),
     takeEvery(ActionMasterLocation.ADD_PROVINCE_REQUEST, handleAddProvince),
-    takeEvery(
-      ActionMasterLocation.GETONE_PROVINCE_REQUEST,
-      handleGetOneProvince
-    ),
+    takeEvery(ActionMasterLocation.GETONE_PROVINCE_REQUEST, handleGetOneProvince),
     takeEvery(ActionMasterLocation.EDIT_PROVINCE_REQUEST, handleEditProvince),
 
     takeEvery(ActionMasterLocation.GET_CITY_REQUEST, handleGetCity),
@@ -128,10 +80,7 @@ function* watchAll() {
       ActionTypeBootcampApply.APPLY_BOOTCAMP_REQUEST,
       handleApplyBootcamp
     ),
-    takeEvery(
-      ActionTypeBootcampApply.RESET_APPLY_BOOTCAMP_REQUEST,
-      handleResetApplyBootcamp
-    ),
+    takeEvery(ActionTypeBootcampApply.RESET_APPLY_BOOTCAMP_REQUEST, handleResetApplyBootcamp),
 
     //list get
     takeEvery(ActionTypeBatchList.GET_BATCHLIST_REQUEST, handleGetBatchList),

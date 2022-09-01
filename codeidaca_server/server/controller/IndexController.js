@@ -11,6 +11,8 @@ import BootcampListController from "./BootcampListController"
 
 import ListController from './ListController'
 import Test from './Test'
+import BootcampProgramController from "./BootcampProgramController"
+import StudentReviewController from "./StudentReviewController"
 
 export default{
     UserController,
@@ -23,6 +25,7 @@ export default{
     DashboardApplyController,
     BootcampListController,
     ListController,
-    Test
+    Test,
+    BootcampProgramController,
+    StudentReviewController
 }
-
