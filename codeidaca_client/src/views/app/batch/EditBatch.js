@@ -21,9 +21,6 @@ export default function EditBatch(props) {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            user_first_name : list.user_first_name,
-            user_last_name : list.user_last_name,
-            bast_total_score : listOne.bast_total_score,
             bast_entity_id: listOne.bast_entity_id,
             bast_status: listOne.bast_status,
             bast_review: listOne.bast_review,
