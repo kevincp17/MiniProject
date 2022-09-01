@@ -3,7 +3,7 @@ import config from '../config/config'
 
 const get = async () => {
     try {
-        const result = await axios.get(`${config.domain}/api/student-review`)
+        const result = await axios.get(`${config.domain}/student-review`)
         // console.log('result api')
         // console.log(result)
         return result.data

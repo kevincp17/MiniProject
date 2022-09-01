@@ -180,7 +180,7 @@ export default function Bootcamp() {
                       <div className="my-5" key={value.prog_id}>
                         <div className=" mx-auto rounded-2xl overflow-hidden shadow-2xl h-full py-3 bg-slate-100 w-9/12">
                           <div className="mx-auto my-3 w-4/5">
-                            <img className="w-1/2 mt-5 mb-8 mx-auto bg-slate-200" crossOrigin='anonymous' src={config.domain + '/api/bootcamp-program/file/' + value.prog_image} alt="" />
+                            <img className="w-1/2 mt-5 mb-8 mx-auto bg-slate-200" crossOrigin='anonymous' src={config.domain + '/bootcamp-program/file/' + value.prog_image} alt="" />
                             <div className="text-lg font-medium">
                               {value.prog_title}
                             </div>
@@ -213,7 +213,7 @@ export default function Bootcamp() {
                     "{value.bore_review}"
                   </div>
                   <div className="flex justify-center text-left mt-1">
-                    <img className="w-1/4" src={config.domain + '/api/student-review/file/' + value.user_photo} alt={value.user_first_name} style={{ borderRadius: "50%" }} />
+                    <img className="w-1/4" src={config.domain + '/student-review/file/' + value.user_photo} alt={value.user_first_name} style={{ borderRadius: "50%" }} />
                     <div className="w-2/6 text-lg my-auto mx-2 text-white">
                       {value.user_first_name}
                       {/* <div className="text-yellow-400 text-xl">

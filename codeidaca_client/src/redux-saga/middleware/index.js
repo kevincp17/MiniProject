@@ -1,6 +1,6 @@
-import { takeEvery, all } from 'redux-saga/effects';
-import * as ActionTypeUser from '../constants/User';
-import * as ActionTypeProgramEntity from '../constants/ProgramEntity';
+import { takeEvery, all } from "redux-saga/effects";
+import * as ActionTypeUser from "../constants/User";
+import * as ActionTypeProgramEntity from "../constants/ProgramEntity";
 // import * as ActionTypeAddressType from '../constants/AddressType'
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
@@ -10,7 +10,7 @@ import * as ActionTypeTest from '../constants/Test'
 import * as ActionTypeBootcampProgram from '../constants/BootcampProgram'
 import * as ActionTypeStudentReview from '../constants/StudentReview'
 
-import { handleSignup, handleSignin, handleSignout } from './UserSaga'
+import { handleSignup, handleSignin, handleSignout, handleSignupEmp } from './UserSaga'
 import { handleGetFourProgram, handleGetThreeCourse, handleGetAlumniTestimony } from './ProgramEntitySaga'
 import { handleGetBatchList, handleGetOneBatchList, handleEditBatch } from './BatchListMiddle'
 import { handleGetBatch } from './TestSaga';
@@ -29,12 +29,17 @@ import {
 } from './MasterLocationSaga'
 
 // Dashboard Apply - Bootcamp
-import * as ActionTypeBootcampApply from "../constants/BootcampApply"
-import { handleGetBootcamp, handleApplyBootcamp, handleResetApplyBootcamp } from "./BootcampApplySaga"
+import * as ActionTypeBootcampApply from "../constants/BootcampApply";
+import {
+  handleGetBootcamp,
+  handleApplyBootcamp,
+  handleResetApplyBootcamp,
+} from "./BootcampApplySaga";
 
 function* watchAll() {
   yield all([
     takeEvery(ActionTypeUser.ADD_SIGNUP_REQUEST, handleSignup),
+    takeEvery(ActionTypeUser.ADD_SIGNUPEMP_REQUEST, handleSignupEmp),
     takeEvery(ActionTypeUser.GET_SIGNIN_REQUEST, handleSignin),
     takeEvery(ActionTypeUser.GET_SIGNOUT_REQUEST, handleSignout),
 
@@ -80,13 +85,14 @@ function* watchAll() {
     //list get
     takeEvery(ActionTypeBatchList.GET_BATCHLIST_REQUEST, handleGetBatchList),
     takeEvery(ActionTypeTest.GET_BATCH_REQUEST, handleGetBatch),
-    takeEvery(ActionTypeBatchList.GETONE_BATCHLIST_REQUEST, handleGetOneBatchList),
+    takeEvery(
+      ActionTypeBatchList.GETONE_BATCHLIST_REQUEST,
+      handleGetOneBatchList
+    ),
 
     //to edit data
     takeEvery(ActionTypeBatchList.EDIT_BATCHLIST_REQUEST, handleEditBatch),
-  ])
+  ]);
 }
 
 export default watchAll;
-
-

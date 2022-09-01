@@ -5,7 +5,7 @@ const get = async (id) => {
     // console.log('id')
     // console.log(id)
     try {
-        const result = await axios.get(`${config.domain}/api/bootcamp-program/${id}`)
+        const result = await axios.get(`${config.domain}/bootcamp-program/${id}`)
         console.log('result api')
         console.log(result)
         return result
@@ -19,7 +19,7 @@ const get = async (id) => {
 const search = async (payload) => {
     const { progType, progTitle } = payload
     try {
-        const result = await axios.get(`${config.domain}/api/bootcamp-program/search/${progType}/${progTitle}`)
+        const result = await axios.get(`${config.domain}/bootcamp-program/search/${progType}/${progTitle}`)
         return result
     } catch (error) {
         return await error

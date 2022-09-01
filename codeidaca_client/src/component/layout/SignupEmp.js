@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { doSignupRequest } from "../../redux-saga/actions/User";
+import { doSignupEmpRequest } from "../../redux-saga/actions/User";
 import { Link } from "react-router-dom";
 
 // export default function Signup() {
@@ -45,9 +45,9 @@ import { Link } from "react-router-dom";
 export default function Signup() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const [roleId, setRoleId] = useState({
-    role_id: 1,
-  });
+  // const [roleId, setRoleId] = useState({
+  //   role_id: 1,
+  // });
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -55,15 +55,18 @@ export default function Signup() {
       password: "",
       confpassword: "",
       user_phone: "",
-      role_id: 1,
+      // role_id: 1,
     },
+
     validationSchema: Yup.object({
       username: Yup.string()
         .max(20, "Max char 20!")
         .required("Username is required"),
       pmail_add: Yup.string()
         .email("Invalid email address")
-        .required("Email is required"),
+        .required("Email is required")
+        .matches(/^[\w.+\-]+@code\.id$/, "Enter your CodeID email"),
+
       // password: Yup.string().min(5).max(15).required(),
       // confpassword: Yup.string().oneOf(
       //   [Yup.ref("password"), null],
@@ -89,10 +92,10 @@ export default function Signup() {
         password: values.password,
         user_phone: values.user_phone,
         ponty_code: "Cell",
-        role_id: roleId.role_id,
+        // role_id: roleId.role_id,
       };
       console.log(payload);
-      dispatch(doSignupRequest(payload));
+      dispatch(doSignupEmpRequest(payload));
 
       setTimeout(() => {
         navigate("/auth/signup/success");
@@ -100,11 +103,11 @@ export default function Signup() {
     },
   });
 
-  const changeHandler = (e) => {
-    setRoleId({ ...roleId, role_id: +e.target.value });
-  };
+  // const changeHandler = (e) => {
+  //   setRoleId({ ...roleId, role_id: +e.target.value });
+  // };
 
-  console.log(roleId);
+  // console.log(roleId);
 
   return (
     <>
@@ -116,7 +119,9 @@ export default function Signup() {
               src="../assets/images/codeid.png"
               alt="Workflow"
             />
-            <h2 className="mt-6 text-center text-3xl text-gray-900">Sign up</h2>
+            <h2 className="mt-6 text-center text-3xl text-gray-900">
+              Signup as Employee Code.Id
+            </h2>
           </div>
           <form className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
@@ -244,30 +249,11 @@ export default function Signup() {
                 </span>
               ) : null}
             </div>
-            <div className="flex items-center">
-              <label
-                htmlFor="role_id"
-                className="w-20 inline-block text-right mr-4 text-black-500 text-black-500"
-              >
-                Cadidate / Talent
-              </label>
-              <div className="flex items-center">
-                <select
-                  onChange={(e) => changeHandler(e)}
-                  className="inline-flex justify-center w-30 rounded-md border border-gray-300 shadow-sm px-8 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                >
-                  <option value="1">Candidate</option>
-                  <option value="2">Talent</option>
-                  {/* values ini role id tapi msh gatau nempelinnya */}
-                </select>
-              </div>
-            </div>
-
             <div>
               <button
                 type="button"
-                onClick={() => navigate("/")}
-                className="group relative w-full flex-initial w-32 h-10 ml-10 border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 "
+                onClick={() => navigate("/Signup")}
+                className="group relative flex-initial w-32 h-10 ml-10 border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 "
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                 Cancel
@@ -275,20 +261,10 @@ export default function Signup() {
               <button
                 type="button"
                 onClick={formik.handleSubmit}
-                className="group relative w-full flex-initial w-32 h-10 ml-24 border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 "
+                className="group relative flex-initial w-32 h-10 ml-24 border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 "
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                 Sign up
-              </button>
-            </div>
-            <div className=" flex justify-center">
-              <button className=" mx-auto mt-2 text-center text-sm text-gray-600">
-                <u
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                  onClick={() => navigate("/SignupEmp")}
-                >
-                  if you are employee code.id, click this for sign up
-                </u>
               </button>
             </div>
           </form>
