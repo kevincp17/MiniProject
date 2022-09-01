@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetBatchRequest } from '../../../redux-saga/actions/Test'
 import { GetBatchRequestList } from '../../../redux-saga/actions/BatchListAction'
-// import EditBatch from '../Modal/EditBatch'
 import EditBatch from './EditBatch'
-// import EditBatch from '../Modal/EditBatch'
 
 export default function Batch() {
     const { list } = useSelector(state => state.batchListState)
@@ -18,11 +16,13 @@ export default function Batch() {
 
     useEffect(() => {
         dispatch(GetBatchRequest())
-    }, [dispatch])
+        setRefresh(false)
+    }, [refresh])
 
     useEffect(() => {
         dispatch(GetBatchRequestList())
-    }, [dispatch])
+        setRefresh(false)
+    }, [refresh])
 
     const onClick = (empID) => {
         setDisplayEdit(true)
