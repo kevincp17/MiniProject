@@ -7,12 +7,14 @@ import ProvinceRoute from './ProvinceRoute'
 import CityRoute from './CityRoute'
 // dashboardApply-(bootcamp)
 import DashboardApplyRoute from "./DashboardApplyRoute"
-import BootcampListRoute from  "./BootcampListRoute"
+import BootcampListRoute from "./BootcampListRoute"
 
 import ListRoute from './ListRoute'
 import TestRoute from './TestRoute'
+import BootcampProgramRoute from './BootcampProgramRoute'
+import StudentReviewRoute from './StudentReviewRoute'
 
-export default{
+export default {
     UserRoute,
     BatchRoute,
     ProgramEntityRoute,
@@ -23,5 +25,7 @@ export default{
     DashboardApplyRoute,
     BootcampListRoute,
     ListRoute,
-    TestRoute
+    TestRoute,
+    BootcampProgramRoute,
+    StudentReviewRoute
 }
