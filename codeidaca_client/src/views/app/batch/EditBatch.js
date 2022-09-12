@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik'
-import { GetOneBatchRequestList, EditBatchListRequest } from '../../../redux-saga/actions/BatchListAction';
+import { GetOneBatchRequestList, EditBatchListRequest } from '../../../redux-saga/actions/BatchEvalutionListAction';
 
 export default function EditBatch(props) {
     const dispatch = useDispatch()

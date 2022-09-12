@@ -1,6 +1,6 @@
 import {call,put} from 'redux-saga/effects'
 import batchAPI from '../../api/api-test'
-import { GetBatchSuccess, GetBatchFailed } from '../actions/Test'
+import { GetBatchSuccess, GetBatchFailed } from '../actions/BatchEvalution1'
 
 function* handleGetBatch(){
   try {

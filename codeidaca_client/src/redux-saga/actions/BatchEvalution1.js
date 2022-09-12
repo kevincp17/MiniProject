@@ -1,4 +1,4 @@
-import * as ActionType from '../constants/Test'
+import * as ActionType from '../constants/BatchEv'
 
 export const GetBatchRequest = () => ({
   type : ActionType.GET_BATCH_REQUEST

@@ -5,8 +5,8 @@ import * as ActionTypeProgramEntity from "../constants/ProgramEntity";
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
 import * as ActionMasterLocation from "../constants/MasterLocation";
-import * as ActionTypeBatchList from "../constants/BatchListConstants";
-import * as ActionTypeTest from "../constants/Test";
+import * as ActionTypeBatchList from "../constants/BatchEvalutionListConstants";
+import * as ActionTypeTest from "../constants/BatchEv";
 
 import {
   handleSignup,
@@ -23,8 +23,8 @@ import {
   handleGetBatchList,
   handleGetOneBatchList,
   handleEditBatch,
-} from "./BatchListMiddle";
-import { handleGetBatch } from "./TestSaga";
+} from "./BatchEvaluationListMiddle";
+import { handleGetBatch } from "./BatchEvaluSaga";
 
 // import {handleAddAddressType,handleDelAddressType,handleEditAddressType,handleGetAddressType,handleGetOneAddressType} from './AddressTypeSaga'
 // import {handleAddCountry,handleDelCountry,handleEditCountry,handleGetCountry,handleGetOneCountry} from './CountrySaga'

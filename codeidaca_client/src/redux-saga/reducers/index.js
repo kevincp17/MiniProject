@@ -7,7 +7,7 @@ import ProvinceReduce from './ProvinceReducer';
 import CityReduce from './CityReducer';
 import MasterLocationReduce from './MasterLocationReducer';
 import BatchListReduce from './BatchListReducer';
-import BatchReduce from './Test';
+import BatchReduce from './BatchEvalutionReducer';
 
 // Dashboard Apply - Bootcamp
 import bootcampApplyReducer from "./BootcampApplyReducer"

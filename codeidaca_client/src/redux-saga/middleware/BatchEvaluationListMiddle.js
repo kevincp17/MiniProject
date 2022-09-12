@@ -1,6 +1,6 @@
 import apiTest from '../../api/api-test';
 import { call, put } from 'redux-saga/effects';
-import { GetBatchSucceedList, GetBatchFailedList, GetOneBatchSucceedList, GetOneBatchFailedList, EditBatchListSucceed, EditBatchListFailed } from '../actions/BatchListAction'
+import { GetBatchSucceedList, GetBatchFailedList, GetOneBatchSucceedList, GetOneBatchFailedList, EditBatchListSucceed, EditBatchListFailed } from '../actions/BatchEvalutionListAction'
 
 
 function* handleGetBatchList() {

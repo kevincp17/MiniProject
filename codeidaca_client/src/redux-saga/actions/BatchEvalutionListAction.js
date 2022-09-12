@@ -1,4 +1,4 @@
-import * as ActionType from '../constants/BatchListConstants'
+import * as ActionType from '../constants/BatchEvalutionListConstants'
 
 
 //GET LIST
