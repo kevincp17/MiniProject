@@ -6,8 +6,6 @@ import CountryReduce from './CountryReducer';
 import ProvinceReduce from './ProvinceReducer';
 import CityReduce from './CityReducer';
 import MasterLocationReduce from './MasterLocationReducer';
-import BatchListReduce from './BatchListReducer';
-import BatchReduce from './Test';
 import bootcampProgramReducer from './BootcampProgramReducer';
 import StudentReviewReducer from './StudentReviewReducer';
 import CreateBatchReduce from './BatchReducer';
@@ -24,8 +22,6 @@ const rootReducer = combineReducers({
   cityState: CityReduce,
   masterLocationState: MasterLocationReduce,
   bootcampApply: bootcampApplyReducer,
-  batchListState: BatchListReduce,
-  batchState: BatchReduce,
   bootcampProgramState: bootcampProgramReducer,
   studentReviewState: StudentReviewReducer,
   createBatchState : CreateBatchReduce,
