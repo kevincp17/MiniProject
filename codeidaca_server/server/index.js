@@ -35,8 +35,6 @@ app.use(async (req, res, next) => {
 });
 
 
-
-
 //auth.setMiddleware(app);
 
 
@@ -62,6 +60,8 @@ app.use(config.URL_API + "/bootcamp_list", routes.BootcampListRoute)
 app.use(config.URL_API + "/images/:filename", uploadDownload.showProductImage)
 // show cv
 app.use(config.URL_API + "/cv/:filename", uploadDownload.showUserCv)
+// Create Batch
+app.use(config.URL_API+"/batch", routes.BatchRoute)
 
 
 //use middleware to handle error from others modules
@@ -82,7 +82,5 @@ sequelize.sync({ force: dropDatabaseSync }).then(async () => {
     });
 
 })
-
-
 
 export default app;

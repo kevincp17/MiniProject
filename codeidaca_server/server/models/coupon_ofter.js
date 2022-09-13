@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class coupon_ofter extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('coupon_ofter', {
     coof_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -65,5 +62,4 @@ export default class coupon_ofter extends Model {
       },
     ]
   });
-  }
-}
+};

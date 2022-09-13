@@ -10,6 +10,7 @@ import BatchListReduce from './BatchListReducer';
 import BatchReduce from './Test';
 import bootcampProgramReducer from './BootcampProgramReducer';
 import StudentReviewReducer from './StudentReviewReducer';
+import CreateBatchReduce from './BatchReducer';
 
 // Dashboard Apply - Bootcamp
 import bootcampApplyReducer from "./BootcampApplyReducer"
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   batchState: BatchReduce,
   bootcampProgramState: bootcampProgramReducer,
   studentReviewState: StudentReviewReducer,
+  createBatchState : CreateBatchReduce,
 });
 
 export default rootReducer;

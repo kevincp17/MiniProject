@@ -22,6 +22,7 @@ import Location from "./views/app/setting/MasterLocation/indexLocation";
 import Category from "./views/app/setting/MasterCategory/indexCategory";
 import Module from "./views/app/setting/MasterModule/indexModule";
 import Skill from "./views/app/setting/MasterSkill/indexSkill";
+import AddBatch from './views/app/batch/AddBatch';
 
 // Dashboard Apply - Bootcamp
 import BootcampApply from "./views/bootcamp/BootcampApply";
@@ -128,6 +129,16 @@ export default function Routes(isLoggedIn) {
           ),
         },
       ],
+    },
+    {
+      path: '/app/batch',
+      element:  <AppLayout/>,
+      children: [
+        {
+          path: "new",
+          element: isLoggedIn ? <AddBatch /> : <Navigate to="/auth/signin" />,
+        },
+      ]
     },
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);

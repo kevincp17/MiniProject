@@ -9,6 +9,7 @@ import * as ActionTypeBatchList from '../constants/BatchListConstants';
 import * as ActionTypeTest from '../constants/Test'
 import * as ActionTypeBootcampProgram from '../constants/BootcampProgram'
 import * as ActionTypeStudentReview from '../constants/StudentReview'
+import * as ActionTypeBatch from '../constants/Batch'
 
 import { handleSignup, handleSignin, handleSignout, handleSignupEmp } from './UserSaga'
 import { handleGetFourProgram, handleGetThreeCourse, handleGetAlumniTestimony } from './ProgramEntitySaga'
@@ -27,6 +28,7 @@ import {
   handleAddProvince, handleDelProvince, handleEditProvince, handleGetProvince, handleGetOneProvince,
   handleAddCity, handleDelCity, handleEditCity, handleGetCity, handleGetOneCity
 } from './MasterLocationSaga'
+import { handleGetBatch, handleAddBatch } from './BatchSaga';
 
 // Dashboard Apply - Bootcamp
 import * as ActionTypeBootcampApply from "../constants/BootcampApply";
@@ -92,6 +94,9 @@ function* watchAll() {
 
     //to edit data
     takeEvery(ActionTypeBatchList.EDIT_BATCHLIST_REQUEST, handleEditBatch),
+    
+    takeEvery(ActionTypeBatch.GET_BATCH_REQUEST, handleGetBatch),
+    takeEvery(ActionTypeBatch.ADD_BATCH_REQUEST, handleAddBatch),
   ]);
 }
 

@@ -1,11 +1,8 @@
 import { Router } from "express";
-import indexController from "../controller/IndexController";
+import IndexController from "../controller/IndexController";
 
 const router=new Router()
-
-router.get('/',indexController.BatchController.findAll)
-router.get('/:id',indexController.BatchController.findOne)
-router.post('/',indexController.BatchController.create)
-router.put('/:id',indexController.BatchController.update)
+router.get('/', IndexController.BatchController.findAll)
+router.post('/', IndexController.BatchController.createNext, IndexController.BatchController.createData, IndexController.BatchController.updateRoles)
 
 export default router
