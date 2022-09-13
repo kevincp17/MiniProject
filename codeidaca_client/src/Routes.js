@@ -1,27 +1,28 @@
-import React from "react";
-import { Navigate, useRoutes, Outlet, useNavigate } from "react-router-dom";
-import AppLayout from "./component/layout/AppLayout";
-import LandingPage from "./component/layout/LandingPageTest";
-import MainLayout from "./component/layout/MainLayout";
-import Page404 from "./views/404/Page404";
-import Bootcamp from "./views/bootcamp/Bootcamp";
-import Signin from "./component/layout/Signin";
-import Dashboard from "./views/app/dashboard/Dashboard";
-import Candidat from "./views/app/candidat/Candidat";
-import Curriculum from "./views/app/curriculum/Curriculum";
-import Hiring from "./views/app/hiring/Hiring";
-import Setting from "./views/app/setting/Setting";
-import Talent from "./views/app/talent/Talent";
-import BlankLayout from "./component/layout/BlankLayout";
-import Signup from "./component/layout/Signup";
-import SignupEmp from "./component/layout/SignupEmp";
-import SignupSuccess from "./component/layout/SignupSuccess";
-import Placement from "./views/app/placement/Placement";
-import Location from "./views/app/setting/MasterLocation/indexLocation";
-import Category from "./views/app/setting/MasterCategory/indexCategory";
-import Module from "./views/app/setting/MasterModule/indexModule";
-import Skill from "./views/app/setting/MasterSkill/indexSkill";
+
+import React from 'react';
+import { Navigate, useRoutes,Outlet,useNavigate } from 'react-router-dom';
+import AppLayout from './component/layout/AppLayout';
+import LandingPage from './component/layout/LandingPageTest';
+import MainLayout from './component/layout/MainLayout';
+import Page404 from './views/404/Page404';
+import Bootcamp from './views/bootcamp/Bootcamp'
+import Signin from './component/layout/Signin';
+import Dashboard from './views/app/dashboard/Dashboard';
+import Candidat from './views/app/candidat/Candidat';
+import Batch from './views/app/batch/Batch';
+import Curriculum from './views/app/curriculum/Curriculum';
+import Hiring from './views/app/hiring/Hiring';
+import Setting from './views/app/setting/Setting';
+import Talent from './views/app/talent/Talent'
+import BlankLayout from './component/layout/BlankLayout';
+import Signup from './component/layout/Signup';
+import Placement from './views/app/placement/Placement';
+import Location from './views/app/setting/MasterLocation/indexLocation'
+import Category from './views/app/master/category';
+import Module from './views/app/setting/MasterModule/indexModule'
+import Skill from './views/app/setting/MasterSkill/indexSkill'
 import AddBatch from './views/app/batch/AddBatch';
+
 
 // Dashboard Apply - Bootcamp
 import BootcampApply from "./views/bootcamp/BootcampApply";
@@ -33,6 +34,7 @@ export default function Routes(isLoggedIn) {
       path: "/",
       element: <LandingPage />,
       children: [
+
         { path: "signin", element: <Navigate to="/auth/signin" /> },
         { path: "signup", element: <Navigate to="/auth/signup" /> },
         { path: "signupemp", element: <Navigate to="/auth/signupemp" /> },
@@ -44,12 +46,13 @@ export default function Routes(isLoggedIn) {
           element: <Setting />,
           children: [
             { path: "Location", element: <Location /> },
-            { path: "Category", element: <Category /> },
+            { path: "category", element: <Category /> },
             { path: "Module", element: <Module /> },
             { path: "Skill", element: <Skill /> },
           ],
         },
       ],
+
     },
     {
       path: "/",
