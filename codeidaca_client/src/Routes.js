@@ -8,7 +8,6 @@ import Bootcamp from "./views/bootcamp/Bootcamp";
 import Signin from "./component/layout/Signin";
 import Dashboard from "./views/app/dashboard/Dashboard";
 import Candidat from "./views/app/candidat/Candidat";
-import Batch from "./views/app/batch/Batch";
 import Curriculum from "./views/app/curriculum/Curriculum";
 import Hiring from "./views/app/hiring/Hiring";
 import Setting from "./views/app/setting/Setting";
