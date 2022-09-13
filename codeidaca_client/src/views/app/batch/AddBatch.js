@@ -35,7 +35,7 @@ const filterMonth = [
 export default function AddBatch() {
 	const dispatch = useDispatch()
 	let navigate = useNavigate()
-	const { batchs } = useSelector((state) => state.batchState)
+	const { batchs } = useSelector((state) => state.createBatchState)
 	const [totalPeserta, setTotalPeserta] = useState(0)
 	const [peserta, setPeserta] = useState([])
 	const [value, setValue] = useState("")

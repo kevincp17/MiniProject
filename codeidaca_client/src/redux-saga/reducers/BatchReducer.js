@@ -4,7 +4,7 @@ const INIT_STATE = {
   batchs: []
 }
 
-const BatchReduce = (state = INIT_STATE, action) => {
+const CreateBatchReduce = (state = INIT_STATE, action) => {
   switch (action.type) {
     case ActionType.GET_BATCH_REQUEST:
       return { ...state }
@@ -34,4 +34,4 @@ const AddBatchSucceed = (state,action) =>{
   }
 }
 
-export default BatchReduce
+export default CreateBatchReduce
