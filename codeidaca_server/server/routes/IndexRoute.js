@@ -9,8 +9,6 @@ import CityRoute from './CityRoute'
 import DashboardApplyRoute from "./DashboardApplyRoute"
 import BootcampListRoute from "./BootcampListRoute"
 
-import ListRoute from './ListRoute'
-import TestRoute from './TestRoute'
 import BootcampProgramRoute from './BootcampProgramRoute'
 import StudentReviewRoute from './StudentReviewRoute'
 
@@ -24,8 +22,6 @@ export default {
     CityRoute,
     DashboardApplyRoute,
     BootcampListRoute,
-    ListRoute,
-    TestRoute,
     BootcampProgramRoute,
     StudentReviewRoute
 }
