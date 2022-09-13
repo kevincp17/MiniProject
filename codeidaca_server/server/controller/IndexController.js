@@ -9,8 +9,6 @@ import CityController from "./CityController"
 import DashboardApplyController from "./DashboardApplyController"
 import BootcampListController from "./BootcampListController"
 
-import ListController from './ListController'
-import Test from './Test'
 import BootcampProgramController from "./BootcampProgramController"
 import StudentReviewController from "./StudentReviewController"
 
@@ -24,8 +22,6 @@ export default{
     CityController,
     DashboardApplyController,
     BootcampListController,
-    ListController,
-    Test,
     BootcampProgramController,
     StudentReviewController
 }
