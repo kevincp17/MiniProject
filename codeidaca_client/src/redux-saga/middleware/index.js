@@ -5,8 +5,6 @@ import * as ActionTypeProgramEntity from "../constants/ProgramEntity";
 // import * as ActionCountryType from '../constants/Country'
 // import * as ActionProvince from '../constants/Province'
 import * as ActionMasterLocation from '../constants/MasterLocation'
-import * as ActionTypeBatchList from '../constants/BatchListConstants';
-import * as ActionTypeTest from '../constants/Test'
 import * as ActionTypeBootcampProgram from '../constants/BootcampProgram'
 import * as ActionTypeStudentReview from '../constants/StudentReview'
 import * as ActionTypeBatch from '../constants/Batch'
@@ -83,17 +81,8 @@ function* watchAll() {
       handleApplyBootcamp
     ),
     takeEvery(ActionTypeBootcampApply.RESET_APPLY_BOOTCAMP_REQUEST, handleResetApplyBootcamp),
-
-    //list get
-    takeEvery(ActionTypeBatchList.GET_BATCHLIST_REQUEST, handleGetBatchList),
-    takeEvery(ActionTypeTest.GET_BATCH_REQUEST, handleGetBatch),
-    takeEvery(
-      ActionTypeBatchList.GETONE_BATCHLIST_REQUEST,
-      handleGetOneBatchList
-    ),
-
-    //to edit data
-    takeEvery(ActionTypeBatchList.EDIT_BATCHLIST_REQUEST, handleEditBatch),
+    
+    //batchEvaluation Soon
     
     takeEvery(ActionTypeBatch.GET_BATCH_REQUEST, handleGetBatch),
     takeEvery(ActionTypeBatch.ADD_BATCH_REQUEST, handleAddBatch),
