@@ -7,6 +7,12 @@ import ProvinceController from "./ProvinceController"
 import CityController from "./CityController"
 import cateCtrl from "./categoryCtrl"
 import parentCateCtrl from "./parentCateCtrl"
+// dashboardApply-(bootcamp)
+import DashboardApplyController from "./DashboardApplyController"
+import BootcampListController from "./BootcampListController"
+import BootcampProgramController from "./BootcampProgramController"
+import StudentReviewController from "./StudentReviewController"
+
 
 export default{
     UserController,
@@ -18,4 +24,9 @@ export default{
     CityController,
     cateCtrl,
     parentCateCtrl,
+    DashboardApplyController,
+    BootcampListController,
+    BootcampProgramController,
+    StudentReviewController
+
 }
