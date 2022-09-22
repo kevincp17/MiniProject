@@ -142,6 +142,16 @@ export default function Routes(isLoggedIn) {
         },
       ]
     },
+    {
+      path: '/app/batch/evaluation',
+      element:  <AppLayout/>,
+      children: [
+        {
+          path: "evaluation",
+          element: isLoggedIn ? <BatchEvaluation /> : <Navigate to="/auth/signin" />,
+        },
+      ]
+    },
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
 }
