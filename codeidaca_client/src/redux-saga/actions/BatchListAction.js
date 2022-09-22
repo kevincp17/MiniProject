@@ -51,16 +51,16 @@ export const EditBatchListFailed = (payload) => ({
 })
 
 //get batch name  
-export const GetBatchRequest = () => ({
-    type : ActionType.GET_BATCH_REQUEST
+export const GetBatchNameRequest = () => ({
+    type : ActionType.GET_BATCHNAME_REQUEST
   })
   
-  export const GetBatchSuccess = (payload) => ({
-    type : ActionType.GET_BATCH_SUCCESS,
+  export const GetBatchNameSuccess = (payload) => ({
+    type : ActionType.GET_BATCHNAME_SUCCESS,
     payload
   })
   
-  export const GetBatchFailed = (payload) => ({
-    type : ActionType.GET_BATCH_FAILED,
+  export const GetBatchNameFailed = (payload) => ({
+    type : ActionType.GET_BATCHNAME_FAILED,
     payload
   })
