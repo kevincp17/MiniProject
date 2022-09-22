@@ -14,6 +14,6 @@ export const EDIT_BATCHLIST_SUCCESS = 'batchlist/edit/success'
 export const EDIT_BATCHLIST_FAILED = 'batchlist/edit/failed'
 
 //getname batch
-export const GET_BATCH_REQUEST = 'batch/get/request'
-export const GET_BATCH_SUCCESS = 'batch/get/success'
-export const GET_BATCH_FAILED = 'batch/get/failed'
+export const GET_BATCHNAME_REQUEST = 'batchname/get/request'
+export const GET_BATCHNAME_SUCCESS = 'batchname/get/success'
+export const GET_BATCHNAME_FAILED = 'batchname/get/failed'
