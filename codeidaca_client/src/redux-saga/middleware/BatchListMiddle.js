@@ -1,6 +1,6 @@
 import batchOkApi from '../../api/api-batchOk';
 import { call, put } from 'redux-saga/effects';
-import { GetBatchSucceedList, GetBatchFailedList, GetOneBatchSucceedList, GetOneBatchFailedList, EditBatchListSucceed, EditBatchListFailed , GetBatchSuccess , GetBatchFailed} from '../actions/BatchListAction'
+import { GetBatchSucceedList, GetBatchFailedList, GetOneBatchSucceedList, GetOneBatchFailedList, EditBatchListSucceed, EditBatchListFailed , GetBatchNameSuccess , GetBatchNameFailed} from '../actions/BatchListAction'
 
 
 function* handleGetBatchList() {
@@ -33,12 +33,12 @@ function* handleEditBatch(action) {
 }
 
 
-function* handleGetBatch(){
+function* handleGetBatchName(){
   try {
     const result = yield call(batchOkApi.name)
-    yield put(GetBatchSuccess(result))
+    yield put(GetBatchNameSuccess(result))
   } catch (error) {
-    yield put(GetBatchFailed(error))
+    yield put(GetBatchNameFailed(error))
   }
 }
 
@@ -46,7 +46,7 @@ export {
   handleGetBatchList,
   handleGetOneBatchList,
   handleEditBatch,
-  handleGetBatch
+  handleGetBatchName
 }
 
 
