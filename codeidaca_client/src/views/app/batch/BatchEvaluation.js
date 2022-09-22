@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetBatchRequestList, GetBatchNameRequest } from '../../../redux-saga/actions/BatchListAction'
-import EditBatch from './EditBatch'
+import EditBatch from './EditBatchEvaluation'
 
 export default function Batch() {
     const { list } = useSelector(state => state.batchListState)
