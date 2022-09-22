@@ -12,6 +12,9 @@ import DashboardApplyController from "./DashboardApplyController"
 import BootcampListController from "./BootcampListController"
 import BootcampProgramController from "./BootcampProgramController"
 import StudentReviewController from "./StudentReviewController"
+//batchEvaluation G
+import BatchEvaluationOk from "./BatchEvaluationOk"
+
 
 
 export default{
@@ -27,6 +30,7 @@ export default{
     DashboardApplyController,
     BootcampListController,
     BootcampProgramController,
-    StudentReviewController
+    StudentReviewController,
+    BatchEvaluationOk
 
 }

@@ -65,6 +65,9 @@ app.use(config.URL_API + "/images/:filename", uploadDownload.showProductImage)
 app.use(config.URL_API + "/cv/:filename", uploadDownload.showUserCv)
 // Create Batch
 app.use(config.URL_API+"/batch", routes.BatchRoute)
+// Batch Evaluation Edit G
+app.use(config.URL_API+'/BatchOk',routes.BatchRouteOk)
+
 
 
 

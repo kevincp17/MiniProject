@@ -12,6 +12,7 @@ import DashboardApplyRoute from "./DashboardApplyRoute"
 import BootcampListRoute from "./BootcampListRoute"
 import BootcampProgramRoute from './BootcampProgramRoute'
 import StudentReviewRoute from './StudentReviewRoute'
+import BatchRouteOk from './BatchRouteOk'
 
 export default {
     UserRoute,
@@ -26,5 +27,6 @@ export default {
     DashboardApplyRoute,
     BootcampListRoute,
     BootcampProgramRoute,
-    StudentReviewRoute
+    StudentReviewRoute,
+    BatchRouteOk
 }

@@ -12,3 +12,5 @@ const config = {
 }
 
 export default config
+
+// update the config data and match the database name if you want to access the batch evaluation

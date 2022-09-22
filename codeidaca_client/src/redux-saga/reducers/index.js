@@ -9,6 +9,8 @@ import MasterLocationReduce from './MasterLocationReducer';
 import bootcampProgramReducer from './BootcampProgramReducer';
 import StudentReviewReducer from './StudentReviewReducer';
 import BatchReduce from './BatchReducer';
+import BatchListReduce from './BatchListReducer';
+
 
 // Dashboard Apply - Bootcamp
 import bootcampApplyReducer from "./BootcampApplyReducer"
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
   bootcampProgramState: bootcampProgramReducer,
   studentReviewState: StudentReviewReducer,
   batchState : BatchReduce,
+  batchListState : BatchListReduce, 
+
 });
 
 export default rootReducer;
