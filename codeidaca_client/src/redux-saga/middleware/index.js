@@ -8,11 +8,11 @@ import * as ActionMasterLocation from '../constants/MasterLocation'
 import * as ActionTypeBootcampProgram from '../constants/BootcampProgram'
 import * as ActionTypeStudentReview from '../constants/StudentReview'
 import * as ActionTypeBatch from '../constants/Batch'
+import * as ActionTypeBatchList from '../constants/BatchListConstants';
 
+import {handleGetBatchList, handleGetOneBatchList, handleEditBatch, handleGetBatchName} from './BatchListMiddle'
 import { handleSignup, handleSignin, handleSignout, handleSignupEmp } from './UserSaga'
 import { handleGetFourProgram, handleGetThreeCourse, handleGetAlumniTestimony } from './ProgramEntitySaga'
-import { handleGetBatchList, handleGetOneBatchList, handleEditBatch } from './BatchListMiddle'
-import { handleGetBatch } from './TestSaga';
 import { handleGetBootcampProgram, handleSearchProgram } from './BootcampProgramSaga';
 import { handleGetStudentReview } from './StudentReviewSaga';
 
@@ -82,8 +82,12 @@ function* watchAll() {
     ),
     takeEvery(ActionTypeBootcampApply.RESET_APPLY_BOOTCAMP_REQUEST, handleResetApplyBootcamp),
     
-    //batchEvaluation Soon
-    
+    //batchEvaluation Gempita
+    takeEvery(ActionTypeBatchList.GET_BATCHLIST_REQUEST, handleGetBatchList),
+    takeEvery(ActionTypeBatchList.GET_BATCHNAME_REQUEST, handleGetBatchName),
+    takeEvery(ActionTypeBatchList.GETONE_BATCHLIST_REQUEST, handleGetOneBatchList),
+    takeEvery(ActionTypeBatchList.EDIT_BATCHLIST_REQUEST, handleEditBatch),
+
     takeEvery(ActionTypeBatch.GET_BATCH_REQUEST, handleGetBatch),
     takeEvery(ActionTypeBatch.ADD_BATCH_REQUEST, handleAddBatch),
   ]);
