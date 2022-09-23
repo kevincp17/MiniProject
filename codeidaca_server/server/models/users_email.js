@@ -36,7 +36,6 @@ module.exports = function(sequelize, DataTypes) {
         fields: [
           { name: "pmail_entity_id" },
           { name: "pmail_id" },
-          { name: "pmail_address" }, //jangan lupa tambah lagi ini kalau mau manggil di join nanti
         ]
       },
     ]

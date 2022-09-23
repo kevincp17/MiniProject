@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     usdu_entity_id: {
+      autoIncrement: false,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

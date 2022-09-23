@@ -95,33 +95,6 @@ const showProductImage = async (req, res) => {
         .pipe(res);
 }
 
-const showUserCv = async (req, res) => {
-    try {
-      const mimeType = {
-        docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        doc: "application/msword",
-        pdf: "application/pdf",
-      };
-  
-      const filename = req.params.filename;
-      const type = filename.split(".")[1];
-      const mType = mimeType[type];
-      const url = `${process.cwd()}/${config.UPLOAD_DIR}/${filename}`;
-  
-      var file = fs.createReadStream(url);
-      var stat = fs.statSync(url);
-      res.setHeader("Content-Length", stat.size);
-      res.setHeader("Content-Type", mType);
-      res.setHeader("Content-Disposition", "inline; filename=my_cv." + type);
-      file.pipe(res);
-      fs.createReadStream(url)
-        .on("error", () => responseNotFound(req, res))
-        .pipe(res);
-    } catch (error) {
-      responseNotFound(req, res);
-    }
-  };
-
 
 function responseNotFound(req, res) {
     res.writeHead(404, { "Content-Type": "text/plain" });
@@ -132,6 +105,5 @@ function responseNotFound(req, res) {
 export default {
     uploadSingleFile,
     showProductImage,
-    uploadMultipleFile,
-    showUserCv,
+    uploadMultipleFile
 }
