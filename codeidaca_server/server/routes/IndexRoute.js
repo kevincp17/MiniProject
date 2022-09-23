@@ -14,7 +14,13 @@ import BootcampProgramRoute from './BootcampProgramRoute'
 import StudentReviewRoute from './StudentReviewRoute'
 import BatchRouteOk from './BatchRouteOk'
 
-export default {
+import CandidateRoute from './CandidateRoute'
+import InstructorRoute from './InstructorRoute'
+import ProgramRoute from './ProgramRoute'
+import ImageRoute from "./ImageRoute"
+import TalentRoute from "./TalentRoute"
+
+export default{
     UserRoute,
     BatchRoute,
     ProgramEntityRoute,
@@ -28,5 +34,10 @@ export default {
     BootcampListRoute,
     BootcampProgramRoute,
     StudentReviewRoute,
-    BatchRouteOk
+    BatchRouteOk,
+    CandidateRoute,
+    InstructorRoute,
+    ProgramRoute,
+    ImageRoute,
+    TalentRoute
 }

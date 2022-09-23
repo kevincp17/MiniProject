@@ -1,4 +1,4 @@
-import Sequelize from "sequelize"
+import Sequelize  from "sequelize";
 import config from '../config/config'
 
 const sequelize = new Sequelize(
@@ -15,7 +15,6 @@ const sequelize = new Sequelize(
     }
   }
 )
-
 const DataTypes = require("sequelize").DataTypes;
 const _address = require("./address");
 const _address_type = require("./address_type");
@@ -80,67 +79,67 @@ const _users_roles = require("./users_roles");
 const _users_skill = require("./users_skill");
 
 function initModels(sequelize) {
-  const address = _address.init(sequelize, DataTypes);
-  const address_type = _address_type.init(sequelize, DataTypes);
-  const bank = _bank.init(sequelize, DataTypes);
-  const batch = _batch.init(sequelize, DataTypes);
-  const batch_student = _batch_student.init(sequelize, DataTypes);
-  const batch_student_evaluation = _batch_student_evaluation.init(sequelize, DataTypes);
-  const bootcamp_apply = _bootcamp_apply.init(sequelize, DataTypes);
-  const bootcamp_apply_progress = _bootcamp_apply_progress.init(sequelize, DataTypes);
-  const cart_items = _cart_items.init(sequelize, DataTypes);
-  const category = _category.init(sequelize, DataTypes);
-  const city = _city.init(sequelize, DataTypes);
-  const client = _client.init(sequelize, DataTypes);
-  const content_section = _content_section.init(sequelize, DataTypes);
-  const content_section_material = _content_section_material.init(sequelize, DataTypes);
-  const contents = _contents.init(sequelize, DataTypes);
-  const country = _country.init(sequelize, DataTypes);
-  const coupon_ofter = _coupon_ofter.init(sequelize, DataTypes);
-  const coupon_ofter_course = _coupon_ofter_course.init(sequelize, DataTypes);
-  const course_review = _course_review.init(sequelize, DataTypes);
-  const courses = _courses.init(sequelize, DataTypes);
-  const department = _department.init(sequelize, DataTypes);
-  const employee = _employee.init(sequelize, DataTypes);
-  const employee_client_contract = _employee_client_contract.init(sequelize, DataTypes);
-  const employee_department_history = _employee_department_history.init(sequelize, DataTypes);
-  const employee_pay_history = _employee_pay_history.init(sequelize, DataTypes);
-  const employee_range = _employee_range.init(sequelize, DataTypes);
-  const entity = _entity.init(sequelize, DataTypes);
-  const instructor_course = _instructor_course.init(sequelize, DataTypes);
-  const job_category = _job_category.init(sequelize, DataTypes);
-  const job_post = _job_post.init(sequelize, DataTypes);
-  const job_role = _job_role.init(sequelize, DataTypes);
-  const job_type = _job_type.init(sequelize, DataTypes);
-  const modules = _modules.init(sequelize, DataTypes);
-  const payment_gateaway = _payment_gateaway.init(sequelize, DataTypes);
-  const payment_transaction = _payment_transaction.init(sequelize, DataTypes);
-  const phone_number_type = _phone_number_type.init(sequelize, DataTypes);
-  const program_entity = _program_entity.init(sequelize, DataTypes);
-  const programs_review = _programs_review.init(sequelize, DataTypes);
-  const province = _province.init(sequelize, DataTypes);
-  const roles = _roles.init(sequelize, DataTypes);
-  const route_actions = _route_actions.init(sequelize, DataTypes);
-  const sales_order_detail = _sales_order_detail.init(sequelize, DataTypes);
-  const sales_order_header = _sales_order_header.init(sequelize, DataTypes);
-  const skill_template = _skill_template.init(sequelize, DataTypes);
-  const skill_type = _skill_type.init(sequelize, DataTypes);
-  const status = _status.init(sequelize, DataTypes);
-  const student_course = _student_course.init(sequelize, DataTypes);
-  const student_evaluation = _student_evaluation.init(sequelize, DataTypes);
-  const talent_apply = _talent_apply.init(sequelize, DataTypes);
-  const talent_apply_progress = _talent_apply_progress.init(sequelize, DataTypes);
-  const user_accounts = _user_accounts.init(sequelize, DataTypes);
+  const address = _address(sequelize, DataTypes);
+  const address_type = _address_type(sequelize, DataTypes);
+  const bank = _bank(sequelize, DataTypes);
+  const batch = _batch(sequelize, DataTypes);
+  const batch_student = _batch_student(sequelize, DataTypes);
+  const batch_student_evaluation = _batch_student_evaluation(sequelize, DataTypes);
+  const bootcamp_apply = _bootcamp_apply(sequelize, DataTypes);
+  const bootcamp_apply_progress = _bootcamp_apply_progress(sequelize, DataTypes);
+  const cart_items = _cart_items(sequelize, DataTypes);
+  const category = _category(sequelize, DataTypes);
+  const city = _city(sequelize, DataTypes);
+  const client = _client(sequelize, DataTypes);
+  const content_section = _content_section(sequelize, DataTypes);
+  const content_section_material = _content_section_material(sequelize, DataTypes);
+  const contents = _contents(sequelize, DataTypes);
+  const country = _country(sequelize, DataTypes);
+  const coupon_ofter = _coupon_ofter(sequelize, DataTypes);
+  const coupon_ofter_course = _coupon_ofter_course(sequelize, DataTypes);
+  const course_review = _course_review(sequelize, DataTypes);
+  const courses = _courses(sequelize, DataTypes);
+  const department = _department(sequelize, DataTypes);
+  const employee = _employee(sequelize, DataTypes);
+  const employee_client_contract = _employee_client_contract(sequelize, DataTypes);
+  const employee_department_history = _employee_department_history(sequelize, DataTypes);
+  const employee_pay_history = _employee_pay_history(sequelize, DataTypes);
+  const employee_range = _employee_range(sequelize, DataTypes);
+  const entity = _entity(sequelize, DataTypes);
+  const instructor_course = _instructor_course(sequelize, DataTypes);
+  const job_category = _job_category(sequelize, DataTypes);
+  const job_post = _job_post(sequelize, DataTypes);
+  const job_role = _job_role(sequelize, DataTypes);
+  const job_type = _job_type(sequelize, DataTypes);
+  const modules = _modules(sequelize, DataTypes);
+  const payment_gateaway = _payment_gateaway(sequelize, DataTypes);
+  const payment_transaction = _payment_transaction(sequelize, DataTypes);
+  const phone_number_type = _phone_number_type(sequelize, DataTypes);
+  const program_entity = _program_entity(sequelize, DataTypes);
+  const programs_review = _programs_review(sequelize, DataTypes);
+  const province = _province(sequelize, DataTypes);
+  const roles = _roles(sequelize, DataTypes);
+  const route_actions = _route_actions(sequelize, DataTypes);
+  const sales_order_detail = _sales_order_detail(sequelize, DataTypes);
+  const sales_order_header = _sales_order_header(sequelize, DataTypes);
+  const skill_template = _skill_template(sequelize, DataTypes);
+  const skill_type = _skill_type(sequelize, DataTypes);
+  const status = _status(sequelize, DataTypes);
+  const student_course = _student_course(sequelize, DataTypes);
+  const student_evaluation = _student_evaluation(sequelize, DataTypes);
+  const talent_apply = _talent_apply(sequelize, DataTypes);
+  const talent_apply_progress = _talent_apply_progress(sequelize, DataTypes);
+  const user_accounts = _user_accounts(sequelize, DataTypes);
   const users = _users(sequelize, DataTypes);
-  const users_address = _users_address.init(sequelize, DataTypes);
-  const users_education = _users_education.init(sequelize, DataTypes);
+  const users_address = _users_address(sequelize, DataTypes);
+  const users_education = _users_education(sequelize, DataTypes);
   const users_email = _users_email(sequelize, DataTypes);
-  const users_experiences = _users_experiences.init(sequelize, DataTypes);
-  const users_experiences_skill = _users_experiences_skill.init(sequelize, DataTypes);
-  const users_media = _users_media.init(sequelize, DataTypes);
-  const users_phones = _users_phones.init(sequelize, DataTypes);
+  const users_experiences = _users_experiences(sequelize, DataTypes);
+  const users_experiences_skill = _users_experiences_skill(sequelize, DataTypes);
+  const users_media = _users_media(sequelize, DataTypes);
+  const users_phones = _users_phones(sequelize, DataTypes);
   const users_roles = _users_roles(sequelize, DataTypes);
-  const users_skill = _users_skill.init(sequelize, DataTypes);
+  const users_skill = _users_skill(sequelize, DataTypes);
 
   batch.belongsToMany(users, { as: 'bast_entity_id_users', through: batch_student, foreignKey: "bast_batch_id", otherKey: "bast_entity_id" });
   bootcamp_apply.belongsToMany(bootcamp_apply, { as: 'bapr_prog_id_bootcamp_applies', through: bootcamp_apply_progress, foreignKey: "bapr_entity_id", otherKey: "bapr_prog_id" });
@@ -269,7 +268,7 @@ function initModels(sequelize) {
   batch.belongsTo(program_entity, { as: "batch_prog", foreignKey: "batch_prog_id"});
   program_entity.hasMany(batch, { as: "batches", foreignKey: "batch_prog_id"});
   bootcamp_apply.belongsTo(program_entity, { as: "boap_prog", foreignKey: "boap_prog_id"});
-  program_entity.hasMany(bootcamp_apply, { as: "bootcamp_applies", foreignKey: "boap_prog_id"});
+  program_entity.hasOne(bootcamp_apply, { as: "bootcamp_apply", foreignKey: "boap_prog_id"});
   cart_items.belongsTo(program_entity, { as: "cait_prog", foreignKey: "cait_prog_id"});
   program_entity.hasMany(cart_items, { as: "cart_items", foreignKey: "cait_prog_id"});
   coupon_ofter_course.belongsTo(program_entity, { as: "saca_prog", foreignKey: "saca_prog_id"});
@@ -282,8 +281,6 @@ function initModels(sequelize) {
   program_entity.hasMany(sales_order_detail, { as: "sales_order_details", foreignKey: "sode_prog_id"});
   city.belongsTo(province, { as: "city_prov", foreignKey: "city_prov_id"});
   province.hasMany(city, { as: "cities", foreignKey: "city_prov_id"});
-  // users.belongsTo(roles, { as: "user_current_role_role", foreignKey: "user_current_role"});
-  // roles.hasMany(users, { as: "users", foreignKey: "user_current_role"});
   users_roles.belongsTo(roles, { as: "usro_role", foreignKey: "usro_role_id"});
   roles.hasMany(users_roles, { as: "users_roles", foreignKey: "usro_role_id"});
   bootcamp_apply_progress.belongsTo(route_actions, { as: "bapr_roac", foreignKey: "bapr_roac_id"});
@@ -309,7 +306,7 @@ function initModels(sequelize) {
   batch_student.belongsTo(users, { as: "bast_entity", foreignKey: "bast_entity_id"});
   users.hasMany(batch_student, { as: "batch_students", foreignKey: "bast_entity_id"});
   bootcamp_apply.belongsTo(users, { as: "boap_entity", foreignKey: "boap_entity_id"});
-  users.hasMany(bootcamp_apply, { as: "bootcamp_applies", foreignKey: "boap_entity_id"});
+  users.hasOne(bootcamp_apply, { as: "bootcamp_apply", foreignKey: "boap_entity_id"});
   cart_items.belongsTo(users, { as: "cait_entity", foreignKey: "cait_entity_id"});
   users.hasMany(cart_items, { as: "cart_items", foreignKey: "cait_entity_id"});
   course_review.belongsTo(users, { as: "core_entity", foreignKey: "core_entity_id"});

@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('bootcamp_apply_progress', {
     bapr_id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -21,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       references: {
         model: 'bootcamp_apply',
-        key: 'boap_prog_id'
+        key: 'boap_entity_id'
       }
     },
     boar_comment: {

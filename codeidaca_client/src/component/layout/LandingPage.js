@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
+
 import { Popover, Dialog, Menu, Transition } from '@headlessui/react';
 import {
     AnnotationIcon,
@@ -53,10 +54,7 @@ function classNames(...classes) {
 }
 
 export default function LandingPage() {
-    //returns a function that lets you navigate programmatically
     let navigate = useNavigate()
-    //function that returns the location object that contains 
-    //information about the current URL. Whenever the URL changes, a new location object will be returned.
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
@@ -65,8 +63,6 @@ export default function LandingPage() {
 
     const onSignout = () => {
         dispatch(doSignoutRequest());
-        //If using replace: true, the navigation will replace 
-        //the current entry in the history stack instead of adding a new one.
         navigate(from, { replace: true })
     }
 

@@ -1,5 +1,4 @@
 import UserController from "./UserController"
-import BatchController from "./BatchController"
 import ProgramEntityController from "./ProgramEntityController"
 import AddressTypeController from "./AddressTypeController"
 import CountryController from "./CountryController"
@@ -14,6 +13,12 @@ import BootcampProgramController from "./BootcampProgramController"
 import StudentReviewController from "./StudentReviewController"
 //batchEvaluation G
 import BatchEvaluationOk from "./BatchEvaluationOk"
+
+import BatchController from "./BatchController"
+import CandidateController from "./CandicateController"
+import InstructorController from "./InstructorController"
+import ProgramController from "./ProgramController"
+import TalentController from "./TalentController"
 
 
 
@@ -31,6 +36,10 @@ export default{
     BootcampListController,
     BootcampProgramController,
     StudentReviewController,
-    BatchEvaluationOk
+    BatchEvaluationOk,
+    CandidateController,
+    InstructorController,
+    ProgramController,
+    TalentController
 
 }
