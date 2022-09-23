@@ -41,13 +41,41 @@ app.use(async (req,res,next) =>{
 
 // call routes
 app.use(config.URL_DOMAIN+"/auth",routes.UserRoute)
+app.use(config.URL_DOMAIN + "/batch", routes.BatchRoute)
+app.use(config.URL_DOMAIN + "/program_entity", routes.ProgramEntityRoute)
+// app.use(config.URL_IMAGE+"/program_entity",routes.ProgramEntityRoute)
+
+app.use(config.URL_DOMAIN+"/address_type",routes.AddressTypeRoute)
+app.use(config.URL_DOMAIN+"/country",routes.CountryRoute)
+app.use(config.URL_DOMAIN+"/province",routes.ProvinceRoute)
+app.use(config.URL_DOMAIN+"/city",routes.CityRoute)
+app.use('/app/category',routes.CateRoute)
+app.use('/app/edit',routes.parentCateRoute)
+
+//dash batch evaluation (soon)
+
+// Bootcamp Program View
+app.use(config.URL_API + '/bootcamp-program', routes.BootcampProgramRoute)
+app.use(config.URL_API + '/student-review', routes.StudentReviewRoute)
+// Dashboard Apply - Bootcamp
+app.use(config.URL_API + "/apply_bootcamp", routes.DashboardApplyRoute)
+app.use(config.URL_API + "/bootcamp_list", routes.BootcampListRoute)
+// show images
+app.use(config.URL_API + "/images/:filename", uploadDownload.showProductImage)
+// show cv
+app.use(config.URL_API + "/cv/:filename", uploadDownload.showUserCv)
+// Create Batch
+app.use(config.URL_API+"/batch", routes.BatchRoute)
+// Batch Evaluation Edit G
+app.use(config.URL_API+'/BatchOk',routes.BatchRouteOk)
+
 app.use(config.URL_API + "/batch", routes.BatchRoute)
 app.use(config.URL_API+"/candidate", routes.CandidateRoute)
 app.use(config.URL_API+"/instructor", routes.InstructorRoute)
 app.use(config.URL_API+"/program", routes.ProgramRoute)
 app.use(config.URL_API+"/talent", routes.TalentRoute)
 
-app.use(config.URL_IMAGE + "/", routes.ImageRoute);
+app.use(config.URL_IMAGE1 + "/", routes.ImageRoute);
 
 
 //use middleware to handle error from others modules

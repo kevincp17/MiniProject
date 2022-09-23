@@ -6,7 +6,8 @@ const config = {
     db_username : "postgres",
     db_password: "admin",
     URL_DOMAIN : '/codeid',
-    URL_IMAGE : '/codeid/api/images',
+    URL_IMAGE: '/codeid/images/',
+    URL_IMAGE1 : '/codeid/api/images',
     URL_API : '/codeid/api',
     UPLOAD_DIR : '/storages'
   }
