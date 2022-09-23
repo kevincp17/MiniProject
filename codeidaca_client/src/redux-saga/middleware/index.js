@@ -26,7 +26,7 @@ import {
   handleAddProvince, handleDelProvince, handleEditProvince, handleGetProvince, handleGetOneProvince,
   handleAddCity, handleDelCity, handleEditCity, handleGetCity, handleGetOneCity
 } from './MasterLocationSaga'
-import { handleGetBatch, handleAddBatch } from './BatchSaga';
+import { handleGetBatch, handleAddBatch,handleDelBatch, handleEditBatch, handleGetBatchId,handleUpdateBatch } from './BatchSaga';
 
 // Dashboard Apply - Bootcamp
 import * as ActionTypeBootcampApply from "../constants/BootcampApply";
@@ -90,6 +90,11 @@ function* watchAll() {
 
     takeEvery(ActionTypeBatch.GET_BATCH_REQUEST, handleGetBatch),
     takeEvery(ActionTypeBatch.ADD_BATCH_REQUEST, handleAddBatch),
+
+    takeEvery(ActionTypeBatch.GET_BATCH_ID_REQUEST, handleGetBatchId),
+    takeEvery(ActionTypeBatch.UPDATE_BATCH_REQUEST,handleUpdateBatch),
+    takeEvery(ActionTypeBatch.EDIT_BATCH_REQUEST,handleEditBatch),
+    takeEvery(ActionTypeBatch.DEL_BATCH_REQUEST,handleDelBatch)
   ]);
 }
 

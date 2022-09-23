@@ -24,28 +24,24 @@ export default function Signin() {
   
 
   const validationSchema = Yup.object().shape({
-    username: Yup
-      .string()
-      // .email('Must be a valid email')
-      .min(4, 'your username or email is too short')
-      .max(255).required('your email not valid'),
+    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
     password: Yup
       .string()
-      .min(4, 'Password must be at least 8 characters')
-      .max(25, 'Password must be at most 25 characters')
+      .min(5)
+      .max(5)
       .required(),
   });
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: ""
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
 
       let payload = {
-        username: values.username,
+        email: values.email,
         password: values.password
       };
 
@@ -79,23 +75,23 @@ export default function Signin() {
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="username" className="sr-only">
-                  Username or Email address
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
                 </label>
                 <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  value={formik.values.username}
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  autoComplete="username"
+                  autoComplete="email"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Username or Email address"
+                  placeholder="Email address"
                 />
-                {formik.touched.username && formik.errors.username ? (
-                  <span className="mt-2 text-sm text-red-600">{formik.errors.username}</span>
+                {formik.touched.email && formik.errors.email ? (
+                  <span className="mt-2 text-sm text-red-600">{formik.errors.email}</span>
                 ) : null}
               </div>
               <div>

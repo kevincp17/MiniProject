@@ -22,6 +22,8 @@ import Category from './views/app/master/category';
 import Module from './views/app/setting/MasterModule/indexModule'
 import Skill from './views/app/setting/MasterSkill/indexSkill'
 import AddBatch from './views/app/batch/AddBatch';
+import EditBatch from './views/app/batch/EditBatch';
+
 
 
 // Dashboard Apply - Bootcamp
@@ -87,6 +89,11 @@ export default function Routes(isLoggedIn) {
         {
           path: "batch",
           element: isLoggedIn ? <Batch /> : <Navigate to="/auth/signin" />,
+        },
+        {
+          path: "batch/:id",
+          element: isLoggedIn ? <EditBatch /> : <Navigate to="/auth/signin" />,
+        
         },
         {
           path: "placement",
